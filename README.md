@@ -4,7 +4,7 @@
 </h1>
 
 ## Curso
-- Curso técnico em análise e desenvolimento de sistemas
+- Curso técnico em Análise e Desenvolimento de Sistemas
 
 ## Cronograma
 - [x] Aula 04 - Introdução ao Github (07/02/24)

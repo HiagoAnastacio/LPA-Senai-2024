@@ -1,4 +1,3 @@
-
   <h1 align="center">
   Lógica de Programação e Algoritmos - 1º Semestre de 2024
 </h1>

@@ -1,5 +1,6 @@
 programa
 {
+	
 	inclua biblioteca Matematica --> mat
 	inclua biblioteca Util --> u
 	funcao inicio()
@@ -24,20 +25,18 @@ programa
 		{
 			para (inteiro j = 0; j < u.numero_colunas(coordenadas); j ++)
 			{
-				escreva(coordenadas[i][j], "\t ")
+				escreva(coordenadas[i][j], "\t")
 			}
 			escreva("\n")
 		}
 	}
 }
-
-
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 679; 
+ * @POSICAO-CURSOR = 476; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

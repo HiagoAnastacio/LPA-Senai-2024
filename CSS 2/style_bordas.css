@@ -1,0 +1,11 @@
+.pontilhado{border-style: dotted;}
+.tracejado{border-style: dashed;}
+.continuo{border-style: solid;}
+.duplo{border-style: double;}
+.ranhura{border-style: groove;}
+.relevo{border-style: ridge;}
+.rebaixo{border-style: inset;}
+.ressalto{border-style: outset;}
+.ausente{border-style: none;}
+.oculto{border-style: hidden;}
+.misto{border-style: dotted dashed solid double}

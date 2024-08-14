@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(249, 185, 89);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+
+}
+.titulo{
+    margin-top: 50px;
+    font-size: 25px;
+
+
+}
+.subti{
+   
+
+}
+.txt{
+    
+    border-bottom: solid ;
+    padding-bottom: 20px;
+}
+.a{
+    text-align: center;
+    padding: 20px 20px 20px 20px ;
+    border-radius: 15px;
+    background-color: white;
+    border: solid;
+}
+.b{
+    text-align: center;
+    border-bottom: solid ;
+    padding-bottom: 20px;
+
+}
+.img{
+    border-radius: 10px;
+    border: solid black;
+    width: 300px;
+    height: 200px;
+}

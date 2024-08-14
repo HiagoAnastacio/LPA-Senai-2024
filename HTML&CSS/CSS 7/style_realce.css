@@ -1,0 +1,31 @@
+p{
+    outline-color: red;
+    outline-width: 5px;
+}
+ 
+.pontilhado{
+   outline-style: dotted;
+   
+}
+.tracejado{
+ outline-style: dashed;
+}
+.contínuo{
+ outline-style: solid;
+}
+.duplo{
+ outline-style: double;
+}
+ 
+.ranhurado{
+ outline-style: groove;
+}
+.ressaltado{
+ outline-style: ridge;
+}
+.rebaixado{
+ outline-style: inset;
+}
+.saliente {
+ outline-style: outset;
+}

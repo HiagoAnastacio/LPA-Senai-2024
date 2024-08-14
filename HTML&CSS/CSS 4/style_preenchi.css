@@ -1,0 +1,14 @@
+div.ex1{
+    border: 1px solid black;
+    background-color: wheat;
+    width: 300px;
+}
+
+div.ex2{
+    border: 1px solid black;
+    background-color:fuchsia;
+    border: 1px solid black;
+    width: 300px;
+    padding: 25px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,30 @@
+.contaider{
+    position: relative;
+}
+.caixa_branca{
+    position: relative;
+    z-index: 1;
+    border: 2px solid black;
+    height: 100px;
+    margin: 30px;
+}
+.caixa_cinza{
+    position: absolute;
+    z-index: 3;
+    background-color: grey;
+    text-align: center;
+    height: 60px;
+    width: 70%;
+    top: 50px;
+    left: 15%;
+}
+.caixa_vermelha{
+    position: absolute;
+    z-index: 2;
+    background-color: red;
+    text-align: center;
+    height: 100px;
+    width: 35%;
+    top: -15%;
+    left: 270px;
+}

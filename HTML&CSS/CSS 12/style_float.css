@@ -1,0 +1,19 @@
+.div1{
+    float:left;
+}
+h2{
+    text-align: center;
+}
+.div2{
+    text-align: justify;
+    
+}
+.eu{
+    float:right;
+    
+}
+.div3{
+    border: 3px solid;
+    overflow: auto;
+    text-align: justify;
+}

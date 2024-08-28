@@ -3,27 +3,41 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 
 }
+.pf{
+    margin-left: 33.33%;
+}
 .titulo{
-    margin-top: 50px;
+    margin-top: 0px;
     font-size: 25px;
-
-
 }
 .subti{
    margin: 0%;
-
 }
 .txt{
-    
+    display: flex;
+    position: fixed;
     border-bottom: solid ;
     padding-bottom: 20px;
+}
+.cabeçalho{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(68, 65, 65);
+    border:solid;
+    width: 100%;
+    position: fixed;
 }
 .a{
     text-align: center;
     padding: 20px 20px 20px 20px ;
-    border-radius: 15px;
+    /*border-radius: 15px;*/
     background-color: white;
     border: solid;
+    margin-bottom: 10px;
+
+
 }
 .b{
     text-align: center;
@@ -37,3 +51,65 @@ body{
     width: 350px;
     height: 275px;
 }
+.pesquisa{
+    float:right;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-left: black solid;
+}
+.pesquisa:hover{
+    background-color: rgb(68, 65, 65);
+}
+.ativo, .noticias, .contato, .sobre{
+    float: left;
+}
+.topo a{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.topo a:hover{
+    background-color: rgb(68, 65, 65);
+}
+.ativo, .noticias, .contato, .sobre, .pesquisa{
+    background-color: red;
+}
+.barra-lateral{
+    float:left;
+    padding: 0px;
+    clear: both;
+    position: fixed;
+
+}
+.lateral{
+    padding:8px;
+    margin-bottom: 8px;
+    background-color: black;
+    color: white;
+
+}
+.lateral a{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.lateral:hover{
+    background-color: rgb(68, 65, 65);
+}
+.topo1 a{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: black solid;
+}
+.topo1 a:hover{
+    background-color: rgb(68, 65, 65);

@@ -1,0 +1,26 @@
+
+.topo{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    justify-items: center;
+    padding: 14px 16px;
+    border: solid 2px black;
+    border-radius: 15px;
+}
+.topo:hover + p{
+    display:block;
+}
+p{
+    display: none;
+}
+
+.cabeçalho{
+   
+}
+.explica{
+
+
+}
+.home{
+
+}

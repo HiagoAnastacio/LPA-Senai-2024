@@ -1,0 +1,6 @@
+div > p{
+    background-color: aquamarine;
+}
+p:hover{
+    text-decoration: line-through;
+}

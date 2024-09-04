@@ -1,0 +1,33 @@
+.destaque:link{
+    color: red;
+}
+.destaque:visited{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.destaque:hover{
+    color: rgb(226, 128, 47);
+
+}
+.destaque:active{
+    color:  #7b0202;
+}
+div{
+    background-color: #7b0202;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+div:hover {
+    background-color: rgb(226, 47, 47);
+}
+p{
+    display: none;
+    background-color: red;
+    padding: 25px;
+}
+div:hover p{
+    display: block;
+}

@@ -1,0 +1,24 @@
+.teste{
+    display: inline; /*Padrão span.*/
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: aquamarine;
+}
+.teste2{
+    display: inline-block; /*Respeita as configurações do item se mantendo na linha.*/
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: aquamarine;
+}
+.teste3{
+    display: block; /*Segue as configurações do item, porém ganha as caracteristicas de bloco, ou seja não permite 2 intens na mesma linha.*/
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: aquamarine;
+}

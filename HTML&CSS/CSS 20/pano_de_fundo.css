@@ -1,0 +1,7 @@
+#example1 {
+    background-image: url(img/png-transparent-elephant-animal-africa-transparent-background-white-background-thumbnail-removebg-preview.png), url(img/download.jfif);
+    background-position: right bottom, left top;
+    background-size: 300px;
+    background-repeat: no-repeat, repeat;
+    padding: 25px;
+  }

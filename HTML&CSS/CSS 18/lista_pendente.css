@@ -1,0 +1,48 @@
+.listapendente{
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    float: right;
+}
+.listapendente2{
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+.conteudo{
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right: 0;
+}
+.conteudo2{
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0);
+    z-index: 1;
+}
+.conteudo a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.listapendente:hover .conteudo{
+    display: block;
+}
+.listapendente2:hover .conteudo2{
+    display: block;
+}
+.conteudo2 img{
+    display: block;
+}
+/*a{
+    border-bottom: 1px solid black;
+}*/

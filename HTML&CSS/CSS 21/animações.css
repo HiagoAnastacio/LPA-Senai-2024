@@ -1,0 +1,14 @@
+div {
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: justify;
+  }
+  div:hover{
+        /*transform: translate(50px,100px);
+        Lembrando que sem a propriedade de uma sub-classe como hover oa efeito será aplicado assim que o arquivo for iniciado*/
+        transform: rotate(180deg);
+  }

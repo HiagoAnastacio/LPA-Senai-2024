@@ -1,0 +1,29 @@
+div{
+    width:100px;
+    height:100px;
+    background: red;
+    transition: 2s , transform 2s;
+    transition-delay: 0.25s;
+    margin-bottom: 10px;
+}
+div:hover{
+    width: 500px;
+    height: 500px;
+    background: rgb(140, 51, 21);
+    transform: rotate(180deg);
+}
+#div1{
+    transition-timing-function: linear;
+}
+#div2{
+    transition-timing-function: ease;
+}
+#div3{
+    transition-timing-function: ease-in;
+}
+#div4{
+    transition-timing-function: ease-out;
+}
+#div5{
+    transition-timing-function: ease-in-out;
+}

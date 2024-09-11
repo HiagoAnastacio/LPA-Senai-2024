@@ -1,0 +1,40 @@
+div{
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;    
+    position: relative;
+    animation-name: EX;
+    animation-duration: 4s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+/*div:hover{
+    animation-name: EX;
+    animation-duration: 4s;
+}*/
+@keyframes EX{
+    0%{
+        background-color: lightblue;
+        /*border-radius: 50% 50%;*/
+        left: 0px; top: 0px;
+    }
+    25%{
+        background-color: blue;
+        left: 200px; top: 0px;
+    }
+    50%{
+        background-color: rgb(185, 117, 249);
+        left: 200px; top: 200px;
+    }
+    75%{
+        background-color: rgb(132, 0, 255);
+        left: 0px; top: 200px;
+    }
+    100%{
+        background-color: rgb(72, 0, 139);
+        border-radius: 50% 50%;
+        transition-duration: 2s;
+        left: 0px; top: 0px;
+    }
+}

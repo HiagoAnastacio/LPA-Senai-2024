@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /*margin-left: 5px;*/
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: blueviolet;
+    height: 50px;
+    align-items: center;
+}
+#logo{
+    color:#f4f4f4;
+    font-weight: 700;
+    padding: 5px;
+}
+.navbar ul {
+    display: flex;
+}
+.navbar li{
+    padding: 5px;
+    list-style: none;
+    background-color: blueviolet;
+}
+.navbar a{
+    text-decoration: none;
+    color: #f4f4f4;
+}
+#artigos{
+    width: 85%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-evenly;
+    /*text-align: justify;*/
+}
+#artigos article{
+    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 2.5px 2.5px rgba(0,0,0,0.55);
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 2rem;
+
+}
+footer p{
+    width: 20%;
+    color: #f4f4f4;
+}

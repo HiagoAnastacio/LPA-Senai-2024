@@ -1,0 +1,112 @@
+body{
+    margin: 0%;
+    padding-top: 7.5%;
+    padding-left: px;
+}
+.cabeçalho{
+    margin: 0;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 0 10px  rgb(169, 169, 169);
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    opacity: 0.85;
+
+}
+.icons{
+    border: 1px none black;
+    border-radius: 10px;
+    align-items: center;
+    width: 50px;
+    padding: 7.5px;
+    height: 50px;
+}
+.img{
+    border-radius: 10px;
+    border: solid black;
+    width: 350px;
+    height: 275px;
+}
+.inicio{
+    display: inline-block;
+    position: relative;
+    justify-items: center;
+    padding: 15px 15px;
+}
+.inicio:hover .home{
+    display:block;
+    cursor: pointer;
+}
+.home{
+    position: absolute;
+    display: none;
+    text-align: center;
+    top: 50px;
+    left: 30px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.55);
+    background-color: rgb(255, 247, 247);
+    border-radius: 10px;
+}
+.receitas{
+    display: inline-block;
+    position: relative;
+    justify-items: center;
+    padding: 14px 16px;
+}
+.receitas:hover .recei{
+    display:block ;
+}
+.recei{
+    position: absolute;
+    display: none;
+    text-align: center;
+    top: 50px;
+    left: 30px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.55);
+    background-color: rgb(255, 247, 247);
+    border-radius: 10px;
+}
+.contato{
+    display: inline-block;
+    position: relative;
+    justify-items: center;
+    padding: 14px 16px;
+}
+.contato:hover .cont{
+    display:block;
+}
+.cont{
+    position: absolute;
+    display: none;
+    text-align: center;
+    top: 50px;
+    left: 30px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.55);
+    background-color: rgb(255, 247, 247);
+    border-radius: 10px;
+    padding: 5px;
+
+}
+.sobre{
+    display: inline-block;
+    position: relative;
+    justify-items: center;
+    padding: 14px 16px;
+}
+.sobre:hover .us{
+    display:block;
+}
+.us{
+    position: absolute;
+    display: none;
+    text-align: center;
+    top: 50px;
+    left: 30px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.55);
+    background-color: rgb(255, 247, 247);
+    border-radius: 10px;
+}
+

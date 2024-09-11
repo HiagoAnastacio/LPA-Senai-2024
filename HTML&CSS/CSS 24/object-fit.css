@@ -1,0 +1,10 @@
+img{
+    width: 200px;
+    height: 325px;
+    object-fit: cover;/*none, scale-down, fill, contain ,cover*/
+    display: block;
+    object-position: 80% 100%;
+}
+/*img:hover{
+    width: 400px;
+}*/

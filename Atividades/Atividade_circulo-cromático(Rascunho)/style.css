@@ -1,0 +1,173 @@
+body{
+    background-color: rgb(223, 211, 195);
+    /* margin: 25px; */
+    padding: 0;
+    height: calc(100vh - 50px);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+.Menu-lateral{
+    background-color:rgb(197, 112, 93);
+    /* margin: 0; */
+    height: 100%z;
+    grid-area: 1/1/13/3;
+    border-radius: 25.5px;
+    box-shadow: 2px 3px 3px 2px rgba(0, 0, 0, 0.25);
+}
+.Menu-lateral ul{
+    list-style: none;
+}
+.Barra-de-pesquisa{
+    /* margin: 0; */
+    display: flex;
+    height: 75%;
+    grid-area: 1/3/1/6;
+    /* margin-left: 30px; */
+    border-radius: 45.5px;
+    background-color: rgb(248, 237, 227);
+    box-shadow: 2px 3px 3px 2px rgba(0, 0, 0, 0.25);
+    justify-content: flex-end;
+}
+.Barra-de-pesquisa p{
+    margin-right: 15px;
+}
+.Conta-login{
+    /* margin: 0; */
+    align-items: center;
+    grid-area: 1/10/1/12;
+    display: flex;
+}
+.Conta-login img{
+    height: 55.5px;
+    /* margin: 0;
+    padding: 0; */
+}
+.Conta-login ul{
+    list-style: none;
+    /* padding-left: 10px; */
+}
+.Conta-login :nth-child(1){
+    font-weight: bold;
+}
+.Imagem{
+    grid-area: 1/12/1/13;
+    /* margin: 0;
+    margin-left: 5%; */
+}
+.Imagem img{
+    height: 65%;
+    width: 45%;
+    background-color:rgb(197, 112, 93);
+    padding: 5px;
+    border-radius: 15px;
+}
+.Baner{
+    /* margin-top: 20px; */
+    grid-area: 2/3/5/13;
+    /* margin-left: 30px; */
+    height: 150px;
+    border-radius: 25.5px;
+    background-color:rgb(197, 112, 93);
+    box-shadow: 2px 3px 3px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+}
+#mini-conteider{
+    display: block;
+    /* margin-left: 1.5%;
+    margin-right: 300px; */
+}
+/* .txt{
+    margin-top: 3.5%;
+    margin-left: 2.5%;
+}
+#txt2{
+    margin-left: 2.5%;
+} */
+.Baner span{
+    font-size: x-large;
+    font-weight: bold;
+}
+.Baner img{
+    /* margin-top: -40; */
+    height: 100%;
+    width:  35%;
+
+}
+.Financas{
+    /* margin-top: 20px; */
+    grid-area: 5/3/9/10;
+}
+.Financas p{
+    /* margin-left: 30px; */
+    margin: 0;
+}
+.F-Conteider{
+    display: flex;
+    height: 100%;
+}
+.F-Conteider div{
+    border-radius: 25.5px;
+    /*margin-left: 30px;*/
+    height: 150px;
+    width: 33%;
+    background-color: rgb(208, 184, 168);
+    box-shadow: 2px 3px 3px 2px rgba(0, 0, 0, 0.25);
+}
+.Cursos{
+    /* margin-top: 40px; */
+    grid-area: 9/3/13/10;
+}
+.C-Subtitulos{
+    /* margin-top: 30px;
+    margin-left: 30px; */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+.C-Conteider{
+    display: flex;
+    height: 100%;
+}
+.C-Conteider div{
+    border-radius: 25.5px;
+    /* margin-left: 30px; */
+    height: 100%;
+    width: 50%;
+    background-color: rgb(208, 184, 168);
+    box-shadow: 2px 3px 3px 2px rgba(0, 0, 0, 0.25);
+}
+.Instrutores{
+    /* margin-top: 20px; */
+    grid-area: 5/10/7/13;
+    /* margin-left: 30px; */
+}
+.I-Conteider{
+    display: flex;
+    height: 100%;
+}
+.I-Conteider div{
+    border-radius:100%;
+    height: 90px;
+    width: 100%;
+    background-color: rgb(248, 237, 227);
+}
+.Noticias{
+    margin-top: 25%;
+    grid-area: 7/10/13/13;
+}
+.N-Subtitulos{
+    /* margin-top: 7.5px;
+    margin-left: 30px; */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+.N-Conteider{
+    display: flex;
+    height: 100%;
+    background-color:rgb(208, 184, 168);
+    /* margin-left: 30px; */
+    border-radius: 25.5px;
+}
+

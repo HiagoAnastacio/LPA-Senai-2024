@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+ 
+input {
+    color: black;
+}
+ 
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    background-color: #2d3b6b;
+    width: 100%;
+    height: 153px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+ 
+.logo img {
+    height: 80px;
+}
+ 
+.search-container {
+    display: flex;
+    align-items: center;  
+    width: 110%;  
+    margin-right: 100px;
+    justify-content:center;
+    align-items: center;
+}
+ 
+.search-bar::placeholder {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    top:100px;
+}
+ 
+.search-bar {
+    width: 60%;
+    height: 30px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: rgba(204, 204, 204, 0.7);
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+    margin-right: -40px;
+}
+ 
+.search-icon {
+    font-size: 16px;
+}
+ 
+.auth-buttons {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    right: 50px;
+ 
+}
+ 
+.discover-btn {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+ 
+.discover-btn::after {
+    content: '▼';
+    font-size: 14px;
+    margin-left: 5px;
+}
+ 
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+}
+ 
+.dropdown.show {
+    display: block;
+}
+ 
+.dropdown ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+ 
+.dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+ 
+.dropdown li:hover {
+    background-color: #f0f0f0;
+}
+ 
+.login-btn {
+    background-color: #0477FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow:0 3px 6px rgba(0, 0, 0, 0.6);
+}
+ 
+.signup-btn {
+    background-color: rgba(255,255,255,0.33);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow:0 3px 6px rgba(0, 0, 0, 0.6);
+}

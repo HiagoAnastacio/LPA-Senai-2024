@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Book Swap</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image 210 (2).png" alt="Logo" />
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar, Livros, Autores, Editoras..." class="search-bar">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div class="auth-buttons">
+            <button class="discover-btn" onclick="toggleDropdown()">Descobrir</button>
+            <div class="dropdown" id="dropdownMenu">
+                <ul>
+                    <li>Livros</li>
+                    <li>Autores</li>
+                    <li>Editores</li>
+                    <li>Leitores</li>
+                    <li>Trocas</li>
+                </ul>
+            </div>
+            <button class="signup-btn">Cadastrar-se</button>
+            <button class="login-btn">Entrar</button>
+           
+        </div>
+    </header>
+ 
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
+ 

@@ -1,9 +1,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    display: flex;
+    flex-direction: column;
 }
  
 input {
@@ -11,8 +10,7 @@ input {
 }
  
 header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
     background-color: #2d3b6b;
     width: 100%;
@@ -21,6 +19,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    border-bottom: 1px solid black;
 }
  
 .logo img {
@@ -29,47 +28,46 @@ header {
  
 .search-container {
     display: flex;
-    align-items: center;  
-    width: 110%;  
+    align-items: center;
+    width: 80%;  
     margin-right: 100px;
     justify-content:center;
-    align-items: center;
+    margin-left: 70px;
 }
  
 .search-bar::placeholder {
     color: rgba(0, 0, 0, 0.8);
     font-size: 18px;
-    top:100px;
+    text-align: center;
 }
  
 .search-bar {
-    width: 60%;
+    width: 80%;
     height: 30px;
     padding: 5px 10px;
     border: 1px solid #ccc;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: rgba(204, 204, 204, 0.7);
     font-size: 16px;
     color: black;
-    text-align: center;
+    text-align:left;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
-    margin-right: -40px;
 }
  
 .search-icon {
+    display: flex;
+    margin-left: -32px;
     font-size: 16px;
 }
  
 .auth-buttons {
     display: flex;
-    gap: 40px;
-    position: relative;
-    right: 50px;
- 
+    gap: 30px;
+    margin-left: auto;
+    margin-right: 50px;
 }
  
 .discover-btn {
-    position: relative;
     background-color: transparent;
     color: white;
     border: none;
@@ -86,8 +84,7 @@ header {
 .dropdown {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 70%;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -113,24 +110,32 @@ header {
     background-color: #f0f0f0;
 }
  
+.login-btn, .signup-btn {
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+}
+ 
 .login-btn {
     background-color: #0477FF;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow:0 3px 6px rgba(0, 0, 0, 0.6);
 }
  
 .signup-btn {
-    background-color: rgba(255,255,255,0.33);
+    background-color: rgba(255, 255, 255, 0.33);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow:0 3px 6px rgba(0, 0, 0, 0.6);
+}
+ 
+.img-home {
+    margin-top: 153px;
+    display: flex;
+    justify-content: center;
+}
+.img-home img {
+    width: 100%;
+    height: auto;
 }

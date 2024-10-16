@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Book Swap</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Img BookSwap/image 210.png" alt="Logo" />
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar" class="search-bar">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div class="auth-buttons">
+            <button class="discover-btn" onclick="toggleDropdown()">Descobrir</button>
+            <div class="dropdown" id="dropdownMenu">
+                <ul>
+                    <li>Livros</li>
+                    <li>Autores</li>
+                    <li>Editoras</li>
+                    <li>Leitores</li>
+                    <li>Trocas</li>
+                </ul>
+            </div>
+            <button class="signup-btn">Cadastrar</button>
+            <button class="login-btn">Entrar</button>
+        </div>
+    </header>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.classList.toggle("show");
+        }
+    </script>
+    <div class="container"> 
+        <div class="book-cover">
+            <img src="Img BookSwap/Frame 34.png" alt="Capa do Livro">
+        </div>
+        <div class="book-info">
+            <h1>Diário de Banana</h1>
+            <h2>Autor(a): Jeff Kinney</h2>
+            <p><strong>Data de Lançamento:</strong> 1 de abril de 2007</p>
+            <p><strong>Descrição:</strong> A escola não é uma experiência agradável para o quase adolescente Greg Heffley, mas sim um campo minado que ele precisa enfrentar. Para isso, ele trama para ganhar o reconhecimento que acha que merece, mas tudo dá errado. Greg escreve um diário sobre as suas desventuras, pensamentos e opiniões para divulgar no dia em que não precisar mais se submeter a absurdos.</p>
+        <div class="rating">
+            <span class="rating-value">4.5</span>
+            <span class="stars">★★★★☆</span>
+        </div>
+        <div class="stats">
+            <div class="stat-button">
+                <p><strong>Usuários que leram a obra: </strong> 75</p>
+            </div>
+            <div class="stat-button">
+                <p><strong>Pessoas que querem ler:</strong> 45</p>
+            </div>
+             <div class="stat-button">
+                 <p><strong>Unidades disponíveis:</strong> 10</p>
+             </div>
+            <div class="stat-button">
+                <p><strong>Avaliações:</strong> 30</p>
+            </div>
+            <div class="stat-button">
+                <p><strong>Interessados:</strong> 20</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Img BookSwap/image 210 (2).png" alt="Logo" />
+            </div>
+            <div class="footer-text">
+                Somos uma rede de troca e venda de livros totalmente brasileira. <br>
+                Venha já pegar o seu livro com a gente.
+            </div>
+            <div class="social-media">
+                <img src="Img BookSwap/image_29-removebg-preview.png" alt="WhatsApp" class="social-icon">
+                <img src="Img BookSwap/image_31-removebg-preview.png" alt="Instagram" class="social-icon">
+                <img src="Img BookSwap/image_32-removebg-preview.png" alt="LinkedIn" class="social-icon">
+                <img src="Img BookSwap/logoinsta-removebg-preview.png" alt="Facebook" class="social-icon">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li>FAQ</li>
+                    <li>Informações sobre a equipe</li>
+                    <li>Contato</li>
+                    <li>Downloads</li>
+                </ul>
+            </div>
+        </div>
+    </footer> 
+</body>
+</html>

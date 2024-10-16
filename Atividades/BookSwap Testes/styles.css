@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: aliceblue;
-    height: 100vh;
+    height: 100vh; 
     /* display: flex; */
     justify-content: center;
     align-items: center;
@@ -249,6 +249,7 @@ footer {
     border: 1px solid black;
     margin-top: auto;
     position: relative;
+    
 }
 .footer-content {
     display: flex;

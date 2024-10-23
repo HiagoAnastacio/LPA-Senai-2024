@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrenheit pra Celcius</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        let p = prompt('Temperatura em Fahrenheit:');
+        let x = FahrenheitParaCelcius(p);
+        document.getElementById("demo").innerHTML = x + '°C';
+
+        function FahrenheitParaCelcius(fahrenheit) {
+            let celsius = (fahrenheit - 32) * 5/9;
+            return celsius.toFixed(2);
+        }
+    </script>
+</body>
+</html>

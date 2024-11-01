@@ -1,9 +1,10 @@
 # Escrever um programa que armazene as informações de três carros,
 # e apresente-as na tela para o usuário.
+#TESTE DE UPLOAD
 
 class Carro:
-    def __init__(self, modelo, ano , placa, marca, cor): #método construtor (Fazer a class trabalhar consigo mesma)
-        # pass
+    def __init__(self, modelo, ano , placa, marca, cor): #método construtor
+        # pass <-- (Para "ignorar" a classe e seguir com o código). O self(__init__) é para identificar que a classe está trabalhando com os próprios atributos.
         self.modelo = modelo #Declaração de um atributo e atribuição de um valor (variáveis de instância)
         self.ano = ano #(variáveis de instância)
         self.placa = placa #(variáveis de instância)
@@ -13,17 +14,17 @@ class Carro:
     def __str__(self):
         return f' |{self.modelo} da marca: {self.marca}\n |ano: {self.ano}\n |cor: {self.cor}\n |placa: {self.placa}\n'
 
-carro1 = Carro('Palio', 1997, 'ABC1234', 'Fiat', 'cinza')
-carro2 = Carro('Classic', 2015, 'XYZ1234', 'Chevrolet', 'vermelho')
-carro3 = Carro('Fiesta', 2002, 'XYZ4321', 'Ford', 'preto')
-carro4 = Carro('Fusca', 1942, 'HIT1944', 'VVolksWagen', 'azul')
+Palio = Carro('Palio', 1997, 'ABC1234', 'Fiat', 'cinza')# instanciamneto de um objeto
+Classic = Carro('Classic', 2015, 'XYZ1234', 'Chevrolet', 'vermelho')
+Fiesta = Carro('Fiesta', 2002, 'XYZ4321', 'Ford', 'preto')
+Fusca = Carro('Fusca', 1942, 'HIT1944', 'VVolksWagen', 'azul')
 
-print(carro1)
-print(carro2)
-print(carro3)
+print(Palio)
+print(Classic)
+print(Fiesta)
 
-print(f'\n |A cor do {carro2.modelo} registrado é {carro2.cor}')
-print(f' |A marca do {carro3.modelo} registrado é {carro3.marca}')
+print(f'\n |A cor do {Classic.modelo} registrado é {Classic.cor}')
+print(f' |A marca do {Fiesta.modelo} registrado é {Fiesta.marca}')
 
 #     modelo_carro1 = 'Palio'
 #     ano_carro1 = 1997

@@ -1,1 +1,0 @@
-print([j for j in [2,3] for x in [0,1,2]])

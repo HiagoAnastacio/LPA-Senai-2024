@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herança</title>
+</head>
+<body>
+    <h1>Herança de classes no  JavaScript</h1>
+    <p>Use a palavra "extends" para herdar todos os métodos de outra classe.</p>
+    <p>Use o método super para chamar o contrutor da classe mãe.</p>
+    <p id="teste"></p>
+    <script>
+        class Carro {
+            constructor(marca){
+                this.nome = marca;
+                }
+            get nome(){
+                return this.nome;
+            }
+            set nome(n){
+                this.nome = n;
+            }
+            static alo(){
+                return "Alô!";
+            }
+            presente(){
+                return 'Eu tenho um  ' + this.nome + ' novo';
+            }
+        }
+        class Modelo extends  Carro {   
+            constructor(marca,modelo){
+                super(marca);
+                this.modelo =  modelo;
+            }
+            mostrar(){
+                return this.presente()  + ', é um ' + this.modelo;
+
+            }
+        }
+        const meuCarro = new Modelo ('Fiat',  'Uno');
+        // meuCarro.nome = "Chevrolet"
+        document.getElementById('teste').innerHTML = meuCarro.mostrar();
+        // document.getElementById('teste').innerHTML = meuCarro.alo();
+    </script>
+</body>
+</html>

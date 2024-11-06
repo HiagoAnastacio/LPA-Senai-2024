@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<body>
+    <h1>Classes em Java Script</h1>
+    <p id="demo"></p>
+    <script>
+        class Carro {
+            constructor(nome,ano){
+                this.nome = nome;
+                this.ano = ano
+                }
+            idade(){
+                const DATA =  new Date();
+                return DATA.getFullYear() - this.ano;
+                }
+            }
+        const MEUCARRO1 = new Carro("Fiat",2007);
+        document.getElementById("demo").innerHTML = "Meu carro tem " +  MEUCARRO1.idade() + " anos.";
+
+        // const MEUCARRO1 = new Carro("Fiat",2007)
+        // const  MEUCARRO2 = new Carro("Ford",2008)
+        
+        // document.getElementById("demo").innerHTML = MEUCARRO1.nome + " " + MEUCARRO1.ano;
+    </script>
+</body>
+</html>

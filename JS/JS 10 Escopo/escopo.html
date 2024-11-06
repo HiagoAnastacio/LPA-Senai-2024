@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função JS</title>
+    <!-- <link rel="stylesheet" href="Func01.js"> -->
+    <!-- <script defer src="Func01.js"></script> -->
+</head>
+<body>
+    <h1>Escopo de variáveis</h1>
+    <p>Fora de minhaFunc() nomeCarro é indefinida.</p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+   <script>
+     let texto = "Fora: " + typeof nomeCarro;
+        document.getElementById("demo1").innerHTML = texto;
+ 
+        function minhaFunc() {
+            let nomeCarro = "Volkswagen";
+            let texto = "Dentro: " + typeof nomeCarro + "" + nomeCarro;
+            document.getElementById("demo2").innerHTML = texto;
+        }
+ 
+        minhaFunc();
+   </script>
+</body>
+</html>

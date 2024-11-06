@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função JS</title>
+    <!-- <link rel="stylesheet" href="Func01.js"> -->
+    <!-- <script defer src="Func01.js"></script> -->
+</head>
+<body>
+    <h1>Retorno de funções como variável</h1>
+    <p>A chamada de uma função pode ser usada como o retorno de uma variável.</p>
+    <p id="teste"></p>
+    <script>
+        function paraCelsius(fahrenheit){
+            return (5/9) * (fahrenheit - 32);
+        }
+        let  txt = "A temperatura é de: " + paraCelsius(77) + "°C."; 
+
+        document.getElementById('teste').innerHTML = txt;
+    </script>
+</body>
+</html>

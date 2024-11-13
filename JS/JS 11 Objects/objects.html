@@ -31,14 +31,14 @@
 
         const veiculo = carro; //Basicamente dando um nome extra a memória de "carro", se alterar "carro" é o mesmo que alterar "veiculo"
             veiculo.tipo = "Ford";
-            delete carro.religiao;
+            delete carro.religiao; // Suma Judeu
         
-        let a = 2;
-        b = a;
-        b = 3;
+        // let a = 2;
+        // b = a;
+        // b = 3;
 
         //Exibindo o Objeto (Coleção)
-        document.getElementById("11").innerHTML = carro.FraseCompleta() + " " + a;
+        document.getElementById("11").innerHTML = carro.FraseCompleta() + " Tem como dono: " + carro.dono.nome;
         // "Este carro é da marca " + carro.tipo + "e o modelo " + carro.modelo;
     </script>
 </body>

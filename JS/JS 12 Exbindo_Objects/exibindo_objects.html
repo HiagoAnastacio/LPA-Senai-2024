@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibindo Objetos</title>
+</head>
+<body>
+    <h1>Exibindo Objetos</h1>
+    <p id="10"></p>
+    <script>
+        function Pessoa(nome, idade, cidade){
+            this.nome = nome;
+            this.idade = idade;
+            this.cidade = cidade;
+        }
+
+        const ser_humano = new Pessoa('João', 25, 'São Paulo');
+        const ser_humano2 = new Pessoa('Maria', 30, 'Rio de Janeiro');
+        const ser_humano3 = new Pessoa('Pedro', 35, 'Belo Horizonte');
+
+        // const pessoa = {
+        //     nome: "João",
+        //     idade: 15,
+        //     cidade: "São Paulo",
+        // }
+
+
+        // const txt = pessoa.nome + " " + pessoa.idade + " " + pessoa.cidade
+
+        // let txt = "";
+        // for (let s in pessoa) {
+        //     txt += pessoa[s] + " ";
+        // }
+        // txt = "" + pessoa["nome"] + " "; --> Assim que ele encontrar o conteúdo que está indexado a caracteristica do objeto pessoa ele o "printa" e da espaço. Tal como ocorre acima com o for inserido neste objeto.
+
+        // const vetor = Object.values(pessoa)
+
+        // let txt = " ";
+        // for (let [chave, valor]  of Object.entries(pessoa)){
+        //     txt += chave + ": " + valor + "<br>";
+        // }
+        document.getElementById("10").innerHTML = JSON.stringify(ser_humano2); //JSON --> Java Script Object Notation
+    </script>
+    <!-- Um metodo é uma function (Função) ligada a uma class (Objeto) -->
+    <!-- ex: JSON -> class | stringfy -> function --> 
+</body>
+</html>

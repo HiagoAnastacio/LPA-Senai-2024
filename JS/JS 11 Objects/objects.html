@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects in JavaScript</title>
+</head>
+<body>
+    <h1>Objects in JavaScript</h1>
+    <p id="11"></p>
+    <script>
+        const carro = new Object();
+
+            carro.tipo = "Fiat";
+            carro.cor = "Azul";
+            carro.modelo = "Palio";
+            carro.FraseCompleta = function(){
+                return "Este carro é um " + carro.tipo + " do modelo " + carro.modelo + " e tem  a cor " + carro.cor +", com a motorização " + carro.motorizacao + " ele diz ser " + carro.religiao +".";
+            }
+            proprietario = {nome: "Edgard", idade: 68};
+            carro.motorizacao = "1.0";
+            carro.religiao = "Judeu";
+            carro.dono = proprietario;
+
+
+        //{
+        //     tipo: "Fiat", 
+        //     modelo: "Palio", 
+        //     cor: "Cinza"
+        // };
+
+        const veiculo = carro; //Basicamente dando um nome extra a memória de "carro", se alterar "carro" é o mesmo que alterar "veiculo"
+            veiculo.tipo = "Ford";
+            delete carro.religiao; // Suma Judeu
+        
+        // let a = 2;
+        // b = a;
+        // b = 3;
+
+        //Exibindo o Objeto (Coleção)
+        document.getElementById("11").innerHTML = carro.FraseCompleta() + " Tem como dono: " + carro.dono.nome;
+        // "Este carro é da marca " + carro.tipo + "e o modelo " + carro.modelo;
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# app.py
+from model.interface import Interface
+from model.vingador import Vingador
+
+def main():
+    Interface().menu()
+
+if __name__ == "__main__":
+    Interface.menu()

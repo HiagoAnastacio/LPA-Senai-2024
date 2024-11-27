@@ -1,0 +1,40 @@
+import mysql.connector
+from mysql.connector import Error
+from dotenv import load_dotenv
+from os import getenv
+
+class database:
+    def __init__(self):
+        load_dotenv()
+        self.host = getenv('BD_HOST')
+        self.database =  getenv('BD_DATABASE')
+        self.user =  getenv('BD_USER')
+        self.password =  getenv('BD_PSWD')
+
+    def connect(self):
+        try:
+            self.connection = mysql.connector.connect(
+                host=self.host, 
+                database=self.database, 
+                user=self.user, 
+                password=self.password
+                )
+            self.cursor = self.connection.cursor()
+            print("Conexão bem sucedida!")
+        except Error as e:
+            print(f"Erro: {e}")
+
+    def disconnet(self):
+        self.cursor.close()
+        print('A conexão foi fechada com sucesso!')
+
+    def execute_query(self, query, values = None):
+        try:
+            self.cursor.execute(query,values)
+            self.connection.commit()
+            print("Query executada com sucesso!")
+            return self.cursor
+        
+        except Error as e:
+            print(f"Erro: {e}")
+            return None

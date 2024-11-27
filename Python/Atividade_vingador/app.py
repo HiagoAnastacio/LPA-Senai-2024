@@ -1,6 +1,8 @@
-# app.py
 from model.interface import Interface
-from model.vingador import Vingador
+# from model.vingador import Vingador
 
-if __name__ == "__main__":
-    Interface.menu()
+def main():
+    Interface().menu_principal()
+
+if __name__ == '__main__':
+    main()

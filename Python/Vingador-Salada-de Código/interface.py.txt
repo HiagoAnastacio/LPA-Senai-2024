@@ -1,0 +1,211 @@
+# interface.py
+import os
+import time
+from model.vingador import Vingador
+from model.database import database
+
+class Interface:
+    animacao = True
+
+    @staticmethod
+    def animacaoLinhas(texto, duracao):
+        for ch in texto:
+            time.sleep(duracao)
+            print(ch, end="", flush=True)
+
+    @staticmethod
+    def limpar_tela():
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    @staticmethod
+    def exibir_titulo():
+        """Exibe o título ASCII em todas as telas."""
+        print('''
+███╗░░██╗░█████╗░██╗░░░██╗░█████╗░░██████╗
+████╗░██║██╔══██╗██║░░░██║██╔══██╗██╔════╝
+██╔██╗██║██║░░██║╚██╗░██╔╝██║░░██║╚█████╗░
+██║╚████║██║░░██║░╚████╔╝░██║░░██║░╚═══██╗
+██║░╚███║╚█████╔╝░░╚██╔╝░░╚█████╔╝██████╔╝
+╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═════╝░
+
+██╗░░░██╗██╗███╗░░██╗░██████╗░░█████╗░██████╗░░█████╗░██████╗░███████╗░██████╗
+██║░░░██║██║████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝
+╚██╗░██╔╝██║██╔██╗██║██║░░██╗░███████║██║░░██║██║░░██║██████╔╝█████╗░░╚█████╗░
+░╚████╔╝░██║██║╚████║██║░░╚██╗██╔══██║██║░░██║██║░░██║██╔══██╗██╔══╝░░░╚═══██╗
+░░╚██╔╝░░██║██║░╚███║╚██████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝
+░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░
+        \n''')
+
+    @staticmethod
+    def menu():
+        if Interface.animacao == True:
+            Interface.animacaoLinhas('''
+███╗░░██╗░█████╗░██╗░░░██╗░█████╗░░██████╗
+████╗░██║██╔══██╗██║░░░██║██╔══██╗██╔════╝
+██╔██╗██║██║░░██║╚██╗░██╔╝██║░░██║╚█████╗░
+██║╚████║██║░░██║░╚████╔╝░██║░░██║░╚═══██╗
+██║░╚███║╚█████╔╝░░╚██╔╝░░╚█████╔╝██████╔╝
+╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═════╝░
+
+██╗░░░██╗██╗███╗░░██╗░██████╗░░█████╗░██████╗░░█████╗░██████╗░███████╗░██████╗
+██║░░░██║██║████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝
+╚██╗░██╔╝██║██╔██╗██║██║░░██╗░███████║██║░░██║██║░░██║██████╔╝█████╗░░╚█████╗░
+░╚████╔╝░██║██║╚████║██║░░╚██╗██╔══██║██║░░██║██║░░██║██╔══██╗██╔══╝░░░╚═══██╗
+░░╚██╔╝░░██║██║░╚███║╚██████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝
+░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░
+            \n''', 0.01)
+        Interface.animacao = False
+        Interface.limpar_tela()
+        
+        # Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título em todas as telas
+        print('Seja bem-vindo! Escolha uma das opções abaixo')
+        print('---------------------------------------------')
+        print('1. Cadastrar vingador')
+        print('2. Ver lista de vingadores')
+        print('3. Convocar vingador')
+        print('4. Aplicar tornozeleira')
+        print('5. Aplicar chip GPS')
+        print('6. Emitir mandado de prisão')
+        print('7. Sair')
+        Interface.ler_opcao_usuario (Interface.listar_vingadores, Interface.cadastrar_vingador, Interface.convocar_vingador, Interface.aplicar_tornozeleira, Interface.aplicar_chip_gps, Interface.emitir_mandado, Interface.sair)
+
+    @staticmethod
+    def cadastrar_vingador():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar o formulário
+        try:
+
+            nome_heroi = input('Nome de herói: '),
+            nome_real = input('Identidade secreta: '),
+            categoria = input('Categoria ("Humano", "Meta-Humano", "Android", "Deidade", "Alenigena"): '),
+            poderes = input('Poderes (separados por vírgula): '),
+            poder_principal = input('Poder principal: '),
+            fraquezas = input('Fraquezas (separados por vírgula): '),
+            nivel_de_forca = input('Nível de força (0 a 10000): ')
+            
+            vingador = Vingador(
+                nome_heroi,
+                nome_real,
+                categoria,
+                poderes,
+                poder_principal,
+                fraquezas,
+                nivel_de_forca,
+            )
+
+            db = database()
+            db.connect()
+            query = "INSERT INTO heroi (nome_heroi, identidade_secreta, categoria, poderes,poder_principal fraquezas, nivel_forca) VALEUS (%s, %s, %s, %s, %s, %s, %s)"
+            values = (nome_heroi, nome_real, categoria, ', '.join(poderes), poder_principal, ', '.join(fraquezas), nivel_de_forca)
+            db.execute(query, values)
+        
+            print(f'Vingador {vingador.nome_heroi} cadastrado com sucesso!')
+        except ValueError as e:
+            print(f"Erro: {e}")
+        except Exception as e:
+            print(f"Erro ao conectar ao banco de dados: {e}")
+        finally:
+            db.disconnet()
+
+            
+        input("\nDigite ENTER para continuar...")
+        Interface.voltar_menu()
+
+    @staticmethod
+    def listar_vingadores():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar a lista
+        Vingador.listar_vingadores()
+        Interface.voltar_menu()
+
+    @staticmethod
+    def convocar_vingador():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar o processo de convocação
+        nome = input("Digite o nome do vingador (herói ou real): ")
+        vingador = Vingador.buscar_vingador(nome)
+        if vingador:
+            vingador.convocar()
+            print(f"{vingador.nome_heroi} foi convocado com sucesso!")
+        else:
+            print("Vingador não encontrado.")
+        Interface.voltar_menu()
+
+    @staticmethod
+    def aplicar_tornozeleira():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar a aplicação da tornozeleira
+        nome = input("Digite o nome do vingador (herói ou real): ")
+        vingador = Vingador.buscar_vingador(nome)
+        if vingador:
+            try:
+                vingador.aplicar_tornozeleira()
+            except ValueError as e:
+                print(f"Erro: {e}")
+        else:
+            print("Vingador não encontrado.")
+        Interface.voltar_menu()
+
+    @staticmethod
+    def aplicar_chip_gps():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar a aplicação do chip GPS
+        nome = input("Digite o nome do vingador (herói ou real): ")
+        vingador = Vingador.buscar_vingador(nome)
+        if vingador:
+            try:
+                vingador.aplicar_chip_gps()
+            except ValueError as e:
+                print(f"Erro: {e}")
+        else:
+            print("Vingador não encontrado.")
+        Interface.voltar_menu()
+
+    @staticmethod
+    def emitir_mandado():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de mostrar a emissão do mandado
+        nome = input("Digite o nome do vingador (herói ou real): ")
+        vingador = Vingador.buscar_vingador(nome)
+        if vingador:
+            vingador.emitir_mandado()
+        else:
+            print("Vingador não encontrado.")
+        Interface.voltar_menu()
+
+    @staticmethod
+    def voltar_menu():
+        Interface.limpar_tela()
+        Interface.exibir_titulo()  # Exibe o título antes de retornar ao menu
+        print("\nO que você deseja fazer agora?")
+        print("1. Voltar ao menu")
+        Interface.ler_opcao_usuario(Interface.menu, None, None)
+
+    @staticmethod
+    def sair():
+        print("Encerrando o programa...")
+        time.sleep(1)
+        exit()
+
+    @staticmethod
+    def ler_opcao_usuario(met1=None, met2=None, met3=None, met4=None, met5=None, met6=None, met7=None):
+        opcao = input("\nDigite aqui: ")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        if opcao == "1" and met1:
+            met1()
+        elif opcao == "2" and met2:
+            met2()
+        elif opcao == "3" and met3:
+            met3()
+        elif opcao == "4" and met4:
+            met4()
+        elif opcao == "5" and met5:
+            met5()
+        elif opcao == "6" and met6:
+            met6()
+        elif opcao == "7" and met7:
+            met7()
+        else:
+            print("Opção inválida. Tente novamente.")
+            Interface.voltar_menu()

@@ -1,187 +1,170 @@
-# interface.py
-import os
-import time
+from string import capwords
 from model.vingador import Vingador
+from os import system
+from model.database import Database
 
 class Interface:
-    animacao = True
 
-    @staticmethod
-    def animacaoLinhas(texto, duracao):
-        for ch in texto:
-            time.sleep(duracao)
-            print(ch, end="", flush=True)
+    def menu_principal(self):
+        self.exibe_titulo_app()
+        while True:
+            self.exibe_titulo("Menu Principal")
+            print("1 - Cadastrar Vingador")
+            print("2 - Listar Vingadores")
+            print("3 - Convocar Vingador")
+            print("4 - Aplicar Tornozeleira")
+            print("5 - Aplicar Chip GPS")
+            print("6 - Listar Detalhes do Vingador")
+            print("7 - Emitir Mandado de Prisão")
+            print("0 - Sair", end="\n\n")
+            opcao = input("Digite a opção desejada: ")
 
-    @staticmethod
-    def limpar_tela():
-        os.system('cls' if os.name == 'nt' else 'clear')
+            if opcao == '1':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Cadastro de Vingador")
+                self.cadastrar_vingador()
+                self.aguardar_enter()
+            elif opcao == '2':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Lista de Vingadores")
+                Vingador.listar_vingadores()
+                self.aguardar_enter()
+            elif opcao == '3':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Convocação de Vingador")
+                self.convocar_vingador()
+                self.aguardar_enter()
+            elif opcao == '4':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Aplicação de Tornozeleira")
+                self.aplicar_tornozeleira()
+                self.aguardar_enter()
+            elif opcao == '5':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Aplicação de Chip GPS")
+                self.aplicar_chip_gps()
+                self.aguardar_enter()
+            elif opcao == '6':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Listar Detalhes do Vingador")
+                self.listar_detalhes_vingador()
+                self.aguardar_enter()
+            elif opcao == '7':
+                self.exibe_titulo_app()
+                self.exibe_titulo("<< Emitir Mandato de Prisão")
+                self.prender()
+                self.aguardar_enter()
+            elif opcao == '0':
+                exit()
+            else:
+                print("Opção inválida.")
+                self.aguardar_enter()
+                self.menu_principal()
 
-    @staticmethod
-    def exibir_titulo():
-        """Exibe o título ASCII em todas as telas."""
-        print('''
-███╗░░██╗░█████╗░██╗░░░██╗░█████╗░░██████╗
-████╗░██║██╔══██╗██║░░░██║██╔══██╗██╔════╝
-██╔██╗██║██║░░██║╚██╗░██╔╝██║░░██║╚█████╗░
-██║╚████║██║░░██║░╚████╔╝░██║░░██║░╚═══██╗
-██║░╚███║╚█████╔╝░░╚██╔╝░░╚█████╔╝██████╔╝
-╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═════╝░
+    def cadastrar_vingador(self):
+        '''Exibe o formulário de cadastro de vingador e cria um novo vingador.'''
+        nome_heroi = capwords(input("Nome do herói: "))
+        nome_real = input("Identidade secreta: ")
+        categoria = input("Categoria ('Humano', 'Meta-Humano', 'Android', 'Deidade', 'Alenigena'): ").capitalize()
+        poderes = input("Poderes (separados por vírgula): ").split(',') # armazena em uma lista
+        poder_principal = input("Poder Principal: ")
+        fraquezas = input("Fraquezas: (separadas por vírgula): ").split(',') # armazena em uma lista
+        nivel_forca = int(input("Nível de Força: "))
 
-██╗░░░██╗██╗███╗░░██╗░██████╗░░█████╗░██████╗░░█████╗░██████╗░███████╗░██████╗
-██║░░░██║██║████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝
-╚██╗░██╔╝██║██╔██╗██║██║░░██╗░███████║██║░░██║██║░░██║██████╔╝█████╗░░╚█████╗░
-░╚████╔╝░██║██║╚████║██║░░╚██╗██╔══██║██║░░██║██║░░██║██╔══██╗██╔══╝░░░╚═══██╗
-░░╚██╔╝░░██║██║░╚███║╚██████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝
-░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░
-        \n''')
+        Vingador(nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca)
 
-    @staticmethod
-    def menu():
-        if Interface.animacao == True:
-            Interface.animacaoLinhas('''
-███╗░░██╗░█████╗░██╗░░░██╗░█████╗░░██████╗
-████╗░██║██╔══██╗██║░░░██║██╔══██╗██╔════╝
-██╔██╗██║██║░░██║╚██╗░██╔╝██║░░██║╚█████╗░
-██║╚████║██║░░██║░╚████╔╝░██║░░██║░╚═══██╗
-██║░╚███║╚█████╔╝░░╚██╔╝░░╚█████╔╝██████╔╝
-╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═════╝░
-
-██╗░░░██╗██╗███╗░░██╗░██████╗░░█████╗░██████╗░░█████╗░██████╗░███████╗░██████╗
-██║░░░██║██║████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝
-╚██╗░██╔╝██║██╔██╗██║██║░░██╗░███████║██║░░██║██║░░██║██████╔╝█████╗░░╚█████╗░
-░╚████╔╝░██║██║╚████║██║░░╚██╗██╔══██║██║░░██║██║░░██║██╔══██╗██╔══╝░░░╚═══██╗
-░░╚██╔╝░░██║██║░╚███║╚██████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝
-░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░
-            \n''', 0.01)
-        Interface.animacao = False
-        # Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título em todas as telas
-        print('Seja bem-vindo! Escolha uma das opções abaixo')
-        print('---------------------------------------------')
-        print('1. Cadastrar vingador')
-        print('2. Ver lista de vingadores')
-        print('3. Convocar vingador')
-        print('4. Aplicar tornozeleira')
-        print('5. Aplicar chip GPS')
-        print('6. Emitir mandado de prisão')
-        print('7. Sair')
-        Interface.ler_opcao_usuario(Interface.cadastrar_vingador, Interface.listar_vingadores, Interface.convocar_vingador, Interface.aplicar_tornozeleira, Interface.aplicar_chip_gps, Interface.emitir_mandado, Interface.sair)
-
-    @staticmethod
-    def cadastrar_vingador():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar o formulário
+        # Salva o vingador no banco de dados
         try:
-            vingador = Vingador(
-                input('Nome de herói: '),
-                input('Identidade secreta: '),
-                input('Categoria (HUMANO, META-HUMANO, ANDROID, DEIDADE, ALIENIGENA): '),
-                input('Poderes (separados por vírgula): '),
-                input('Poder principal: '),
-                input('Fraquezas (separados por vírgula): '),
-                input('Nível de força (0 a 10000): ')
-            )
-            print(f'Vingador {vingador.nome_heroi} cadastrado com sucesso!')
-        except ValueError as e:
-            print(f"Erro: {e}")
+            db = Database()
+            db.connect()
+
+            query = "INSERT INTO heroi (nome_de_heroi, identidade_secreta, categoria, poderes, principal_poder, fraquezas, nivel_de_forca) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             
-        input("\nDigite ENTER para continuar...")
-        Interface.voltar_menu()
+            values = (nome_heroi, nome_real, categoria, ', '.join(poderes), poder_principal, ', '.join(fraquezas), nivel_forca)
+
+            db.execute_query(query, values) # executa a query, substituindo os placeholders pelos valores
+        except Exception as e:
+            print(f"Erro ao salvar vingador no banco de dados: {e}")
+        finally:
+            db.disconnect()
+
+        print(f"Vingador(a) '{nome_heroi}' cadastrado com sucesso.")
+        self.aguardar_enter()
+
+    def aguardar_enter(self):
+        input("\nPressione Enter para continuar...")
+        self.menu_principal()
+
+    def convocar_vingador(self):
+        nome_heroi = capwords(input("Nome do herói: "))
+        for vingador in Vingador.lista_vingadores:
+            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
+                print(vingador.convocar())
+                self.aguardar_enter()
+                return
+        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+        self.aguardar_enter()
+
+    def aplicar_tornozeleira(self):
+        nome_heroi = capwords(input("Nome do herói: "))
+        for vingador in Vingador.lista_vingadores:
+            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
+                print(vingador.aplicar_tornozeleira())
+                self.aguardar_enter()
+                return
+        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+
+    def aplicar_chip_gps(self):
+        nome_heroi = capwords(input("Nome do herói: "))
+        for vingador in Vingador.lista_vingadores:
+            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
+                print(vingador.aplicar_chip_gps())
+                self.aguardar_enter()
+                return
+        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+        self.aguardar_enter()
+
+    def listar_detalhes_vingador(self):
+        nome_heroi = capwords(input("Nome do herói: "))
+        for vingador in Vingador.lista_vingadores:
+            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
+                vingador.listar_detalhes_vingador()
+                self.aguardar_enter()
+                return
+        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+        self.aguardar_enter()
+
+    def prender(self):
+        nome_heroi = capwords(input("Nome do herói: "))
+        for vingador in Vingador.lista_vingadores:
+            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
+                print(vingador.prender())
+                self.aguardar_enter()
+                return
+        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+        self.aguardar_enter()
 
     @staticmethod
-    def listar_vingadores():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar a lista
-        Vingador.listar_vingadores()
-        Interface.voltar_menu()
+    def exibe_titulo(titulo):
+        print(f"\n{titulo}")
+        print('-' * len(titulo))
 
     @staticmethod
-    def convocar_vingador():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar o processo de convocação
-        nome = input("Digite o nome do vingador (herói ou real): ")
-        vingador = Vingador.buscar_vingador(nome)
-        if vingador:
-            vingador.convocar()
-            print(f"{vingador.nome_heroi} foi convocado com sucesso!")
-        else:
-            print("Vingador não encontrado.")
-        Interface.voltar_menu()
+    def exibe_titulo_app():
+        system('cls')
+        print('''
 
-    @staticmethod
-    def aplicar_tornozeleira():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar a aplicação da tornozeleira
-        nome = input("Digite o nome do vingador (herói ou real): ")
-        vingador = Vingador.buscar_vingador(nome)
-        if vingador:
-            try:
-                vingador.aplicar_tornozeleira()
-            except ValueError as e:
-                print(f"Erro: {e}")
-        else:
-            print("Vingador não encontrado.")
-        Interface.voltar_menu()
+███╗░░██╗░█████╗░██╗░░░██╗░█████╗░░██████╗
+████╗░██║██╔══██╗██║░░░██║██╔══██╗██╔════╝
+██╔██╗██║██║░░██║╚██╗░██╔╝██║░░██║╚█████╗░
+██║╚████║██║░░██║░╚████╔╝░██║░░██║░╚═══██╗
+██║░╚███║╚█████╔╝░░╚██╔╝░░╚█████╔╝██████╔╝
+╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═════╝░
 
-    @staticmethod
-    def aplicar_chip_gps():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar a aplicação do chip GPS
-        nome = input("Digite o nome do vingador (herói ou real): ")
-        vingador = Vingador.buscar_vingador(nome)
-        if vingador:
-            try:
-                vingador.aplicar_chip_gps()
-            except ValueError as e:
-                print(f"Erro: {e}")
-        else:
-            print("Vingador não encontrado.")
-        Interface.voltar_menu()
-
-    @staticmethod
-    def emitir_mandado():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de mostrar a emissão do mandado
-        nome = input("Digite o nome do vingador (herói ou real): ")
-        vingador = Vingador.buscar_vingador(nome)
-        if vingador:
-            vingador.emitir_mandado()
-        else:
-            print("Vingador não encontrado.")
-        Interface.voltar_menu()
-
-    @staticmethod
-    def voltar_menu():
-        Interface.limpar_tela()
-        Interface.exibir_titulo()  # Exibe o título antes de retornar ao menu
-        print("\nO que você deseja fazer agora?")
-        print("1. Voltar ao menu")
-        Interface.ler_opcao_usuario(Interface.menu, None, None)
-
-    @staticmethod
-    def sair():
-        print("Encerrando o programa...")
-        time.sleep(1)
-        exit()
-
-    @staticmethod
-    def ler_opcao_usuario(met1=None, met2=None, met3=None, met4=None, met5=None, met6=None, met7=None):
-        opcao = input("\nDigite aqui: ")
-        os.system('cls' if os.name == 'nt' else 'clear')
-        if opcao == "1" and met1:
-            met1()
-        elif opcao == "2" and met2:
-            met2()
-        elif opcao == "3" and met3:
-            met3()
-        elif opcao == "4" and met4:
-            met4()
-        elif opcao == "5" and met5:
-            met5()
-        elif opcao == "6" and met6:
-            met6()
-        elif opcao == "7" and met7:
-            met7()
-        else:
-            print("Opção inválida. Tente novamente.")
-            Interface.voltar_menu()
+██╗░░░██╗██╗███╗░░██╗░██████╗░░█████╗░██████╗░░█████╗░██████╗░███████╗░██████╗
+██║░░░██║██║████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝
+╚██╗░██╔╝██║██╔██╗██║██║░░██╗░███████║██║░░██║██║░░██║██████╔╝█████╗░░╚█████╗░
+░╚████╔╝░██║██║╚████║██║░░╚██╗██╔══██║██║░░██║██║░░██║██╔══██╗██╔══╝░░░╚═══██╗
+░░╚██╔╝░░██║██║░╚███║╚██████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝
+░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝
+        \n''')

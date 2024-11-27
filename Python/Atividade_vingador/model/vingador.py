@@ -1,76 +1,113 @@
-# vingador.py
-import time
-import os 
-
 class Vingador:
+    
+    CATEGORIAS_PERMITIDAS = ['Humano', 'Meta-humano', 'Android', 'Deidade', 'Alienígena']
     lista_vingadores = []
-    
-    categorias_permitidas = ["HUMANO", "META-HUMANO", "ANDROID", "DEIDADE", "ALIENIGENA"]
-    
-    def __init__(self, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_de_forca):
-        # Validação de categoria
-        while categoria.upper() not in Vingador.categorias_permitidas:
-            raise ValueError(f"Categoria inválida. As categorias permitidas são: {', '.join(Vingador.categorias_permitidas)}")
 
+    def __init__(self, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca, convocado=False, tornozeleira=False, chip_gps=False):
         self.nome_heroi = nome_heroi
         self.nome_real = nome_real
-        self.categoria = categoria.upper()
-        self.poderes = poderes.split(",")  # Lista de poderes
+        self.categoria = categoria.capitalize()
+        self.poderes = poderes
         self.poder_principal = poder_principal
-        self.fraquezas = fraquezas.split(",")  # Lista de fraquezas
-        self.nivel_de_forca = int(nivel_de_forca)
-        self.status_convocacao = False 
-        self.status_tornozeleira = False
-        self.status_chip_gps = False
-        self._convocado = False  # Status da convocação
+        self.fraquezas = fraquezas
+        self.nivel_forca = nivel_forca
+        self._convocado = convocado
+        self._tornozeleira = tornozeleira
+        self._chip_gps = chip_gps
+        self.lista_vingadores.append(self)
+
+    @property
+    def categoria(self):
+        return self._categoria
+
+    @categoria.setter
+    def categoria(self, categoria):
+        categoria = categoria.capitalize()
+        if categoria not in self.CATEGORIAS_PERMITIDAS:
+            print(f"Categoria '{categoria}' inválida.")
+            self._categoria = self._solicitar_categoria_valida()
+        else:
+            self._categoria = categoria
+
+    @property
+    def tornozeleira(self):
+        return 'Sim' if self._tornozeleira else 'Não'
+
+    @tornozeleira.setter
+    def tornozeleira(self, valor):
+        self._tornozeleira = valor
+
+    @property
+    def chip_gps(self):
+        return 'Sim' if self._chip_gps else 'Não'
+
+    @chip_gps.setter
+    def chip_gps(self, valor):
+        self._chip_gps = valor
+
+    @property
+    def convocado(self):
+        return 'Sim' if self._convocado else 'Não'
     
-        # Validando o nível de força
-        if not (0 <= self.nivel_de_forca <= 10000):
-            raise ValueError("O nível de força deve ser um número entre 0 e 10000.")
-        
-        Vingador.lista_vingadores.append(self)
-    
+    @convocado.setter
+    def convocado(self, valor):
+        self._convocado = valor
+
+    def _solicitar_categoria_valida(self):
+        while True:
+            categoria = input(f"Digite uma categoria válida ({', '.join(self.CATEGORIAS_PERMITIDAS)}): ").capitalize()
+            if categoria in self.CATEGORIAS_PERMITIDAS:
+                return categoria
+            print(f"Categoria '{categoria}' inválida.")
+
     @classmethod
-    def buscar_vingador(cls, nome):
-        # Buscando vingador por nome de herói ou nome real
-        for v in cls.lista_vingadores:
-            if v.nome_heroi.lower() == nome.lower() or v.nome_real.lower() == nome.lower():
-                return v
+    def listar_vingadores(cls):
+        print(f"{'Nome do Herói'.ljust(20)} |  {'Nome Real'.ljust(20)} |  {'Categoria'.ljust(15)} |  {'Convocado'.ljust(15)} |  {'Tornozeleira'.ljust(15)} |  {'Rastreado'.ljust(15)}")
+        print('-' * 115)
+        for vingador in cls.lista_vingadores:
+            print(vingador)
+
+    def listar_detalhes_vingador(self):
+        print()
+        print(f"Vingador: {self.nome_heroi}")
+        print(f"Nome Real: {self.nome_real}")
+        print(f"Categoria: {self.categoria}")
+        print(f"Poderes: {', '.join(self.poderes)}")
+        print(f"Poder Principal: {self.poder_principal}")
+        print(f"Fraquezas: {', '.join(self.fraquezas)}")
+        print(f"Nível de Força: {self.nivel_forca}")
+        print(f"Convocado: {self.convocado}")
+        print(f"Tornozeleira: {self.tornozeleira}")
+        print(f"Chip GPS: {self.chip_gps}")
         return None
 
-    def convocar(self):
-        self._convocado = True
-        self.status_convocacao = True
+    def __str__(self):
+        return f'{self.nome_real.ljust(20)} |  {self.nome_heroi.ljust(20)} |  {self.categoria.ljust(15)} |  {self.convocado.ljust(15)} |  {self.tornozeleira.ljust(15)} |  {self.chip_gps.ljust(15)}'
 
     def aplicar_tornozeleira(self):
-        if not self._convocado:
-            raise ValueError(f"{self.nome_heroi} não foi convocado. Não é possível aplicar a tornozeleira.")
-        if self.nome_heroi in ["Hulk"]:
-            print(f"{self.nome_heroi} resiste à tornozeleira! Mas após a Viuva Negra o convencer a tornozeleira foi aplicada com sucesso.")
-        if self.nome_heroi in ["Thor"]:
-            print(f"{self.nome_heroi} resiste à tornozeleira! Porém Odin é investidor dos Novos Vingadores, então o Thor é 'coagido' a aceitar a aplicação da tornozeleira com sucesso.")
-        else:
-            print(f"Tornozeleira aplicada com sucesso a {self.nome_heroi}.")
-        self.status_tornozeleira = True 
+        if self._convocado:
+            if self.nome_heroi == 'Thor':
+                return '"Eu sou Thor, Deus do Trovão, filho de Odin! Nenhuma corrente ou restrição pode me controlar. \nTentem colocar-me uma tornozeleira, e verão o que acontece quando um deus é desafiado..."'
+            elif self.nome_heroi == 'Hulk':
+                return '"Hulk esmaga! Hulk mais forte tornozeira!"'
+            self.tornozeleira = True
+            return 'Tornozeleira aplicada com sucesso!'
+        return f'{self.nome_heroi} não foi convocado ainda.'
 
     def aplicar_chip_gps(self):
-        if not self.status_tornozeleira:
-            raise ValueError(f"Não é possível aplicar o chip GPS em {self.nome_heroi} sem antes aplicar a tornozeleira.")
-        print(f"Chip GPS aplicado a {self.nome_heroi}.")
-        self.status_chip_gps = True
-    
-    def emitir_mandado(self):
-        print(f"Mandado de prisão emitido para {self.nome_heroi}.")
+        if not self._tornozeleira:
+            return f'{self.nome_heroi} precisa estar com a tornozeleira aplicada.'
+        self.chip_gps = True
+        return 'Chip GPS aplicado com sucesso!'
 
-    def __str__(self):
-        return f'{self.nome_heroi.ljust(20)} | {self.nome_real.ljust(20)} | {self.categoria.ljust(15)} | {self.status_convocacao} | {self.status_tornozeleira} | {self.status_chip_gps}'
+    def convocar(self):
+        self.convocado = True
+        return f'{self.nome_heroi} convocado!'
+
+    def prender(self):
+        return f'{self.nome_heroi} teve o mandado de prisão emitido!'
+
+    def listar_poderes(self):
+        return self.poderes
     
-    @staticmethod
-    def listar_vingadores():
-        if not Vingador.lista_vingadores:
-            print("Nenhum vingador cadastrado.")
-        else:
-            print(f'{"Nome de herói".ljust(20)} | {"Nome real".ljust(20)} | {"Categoria".ljust(15)} | {"Convocação".ljust(15)} | {"Tornozeleira".ljust(15)} | {"Chip GPS".ljust(15)}')
-            for vingador in Vingador.lista_vingadores:
-                print(vingador)
-        input("Digite ENTER para continuar...")
+   

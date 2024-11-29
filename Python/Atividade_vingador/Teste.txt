@@ -1,0 +1,32 @@
+ try:
+            db = Database()
+            db.connect()
+
+            query = "INSERT INTO convocacao (status_convocacao) VALUES (%s)"
+            
+            values = ()
+
+            db.execute_query(query, values) # executa a query, substituindo os placeholders pelos valores
+        except Exception as e:
+            print(f"Erro ao constatar a convocação no banco de dados: {e}")
+        finally:
+            db.disconnect()
+-----------------------------------------------------------------------------
+    def passar_convocado(self): 
+        if self.convocado == True:
+            try:
+                db = Database()
+                db.connect()
+
+                query = "INSERT INTO convocacao (status_convocacao) VALUES (%s)"
+                    
+                values = (self.convocar_vingador)
+
+                db.execute_query(query, values) # executa a query, substituindo os placeholders pelos valores
+            except Exception as e:
+                print(f"Erro ao constatar a convocação no banco de dados: {e}")
+            finally:
+                db.disconnect()
+        else:
+            print(f"Erro: {e}")
+-----------------------------------------------------------------------------

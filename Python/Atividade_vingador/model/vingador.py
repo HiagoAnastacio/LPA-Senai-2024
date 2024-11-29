@@ -1,9 +1,12 @@
+from model.database import Database
 class Vingador:
     
+    STATUS_CONVOCACAO = ['Pendente','Comparecido','Ausente']
     CATEGORIAS_PERMITIDAS = ['Humano', 'Meta-humano', 'Android', 'Deidade', 'Alienígena']
     lista_vingadores = []
 
-    def __init__(self, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca, convocado=False, tornozeleira=False, chip_gps=False):
+    def __init__(self, id, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca, convocado=False, tornozeleira=False, chip_gps=False):
+        self.id = id
         self.nome_heroi = nome_heroi
         self.nome_real = nome_real
         self.categoria = categoria.capitalize()
@@ -11,7 +14,7 @@ class Vingador:
         self.poder_principal = poder_principal
         self.fraquezas = fraquezas
         self.nivel_forca = nivel_forca
-        self._convocado = convocado
+        self._convocado = convocado.capitalize()
         self._tornozeleira = tornozeleira
         self._chip_gps = chip_gps
         self.lista_vingadores.append(self)
@@ -19,6 +22,10 @@ class Vingador:
     @property
     def categoria(self):
         return self._categoria
+    
+    @property
+    def convocado(self):
+        return self._convocado
 
     @categoria.setter
     def categoria(self, categoria):
@@ -29,9 +36,19 @@ class Vingador:
         else:
             self._categoria = categoria
 
+    @convocado.setter
+    def convocado(self, convocado):
+        convocado = convocado.capitalize()
+        if convocado not in self.STATUS_CONVOCACAO:
+            print(f"Categoria '{convocado}' inválida.")
+            self.convocado = self._solicitar_status()
+        else:
+            self.convocado = convocado
+
     @property
     def tornozeleira(self):
-        return 'Sim' if self._tornozeleira else 'Não'
+        if self.convocado == 'Comparecido':
+            return 'Ativa' if self._tornozeleira else 'Inativo'
 
     @tornozeleira.setter
     def tornozeleira(self, valor):
@@ -39,19 +56,22 @@ class Vingador:
 
     @property
     def chip_gps(self):
-        return 'Sim' if self._chip_gps else 'Não'
+        if self.tornozeleira == 'Ativa':
+            return 'Ativada' if self._chip_gps else 'Inativa'
+        else:
+            return 'O chip não pode ser ativado'
 
     @chip_gps.setter
     def chip_gps(self, valor):
         self._chip_gps = valor
 
-    @property
-    def convocado(self):
-        return 'Sim' if self._convocado else 'Não'
-    
-    @convocado.setter
-    def convocado(self, valor):
-        self._convocado = valor
+    def _solicitar_status(self):
+         while True:
+            convocado = input(f"Aplique um status válido para análise ({', '.join(self.STATUS_CONVOCACAO)}): ").capitalize()
+            if convocado in self.STATUS_CONVOCACAO:
+                return convocado
+            print(f"Categoria '{convocado}' inválida.")
+
 
     def _solicitar_categoria_valida(self):
         while True:
@@ -69,12 +89,13 @@ class Vingador:
 
     def listar_detalhes_vingador(self):
         print()
+        print(f"id: {self.id}")
         print(f"Vingador: {self.nome_heroi}")
         print(f"Nome Real: {self.nome_real}")
         print(f"Categoria: {self.categoria}")
-        print(f"Poderes: {', '.join(self.poderes)}")
+        print(f"Poderes: {','.join(self.poderes)}")
         print(f"Poder Principal: {self.poder_principal}")
-        print(f"Fraquezas: {', '.join(self.fraquezas)}")
+        print(f"Fraquezas: {','.join(self.fraquezas)}")
         print(f"Nível de Força: {self.nivel_forca}")
         print(f"Convocado: {self.convocado}")
         print(f"Tornozeleira: {self.tornozeleira}")
@@ -101,13 +122,28 @@ class Vingador:
         return 'Chip GPS aplicado com sucesso!'
 
     def convocar(self):
-        self.convocado = True
+        self.convocado = 'Comparecido'
         return f'{self.nome_heroi} convocado!'
-
+    
     def prender(self):
         return f'{self.nome_heroi} teve o mandado de prisão emitido!'
 
     def listar_poderes(self):
         return self.poderes
     
-   
+    @staticmethod
+    def carregar_herois():
+        try:
+            db = Database()
+            db.connect()
+
+            query = "SELECT heroi_id, nome_de_heroi, identidade_secreta, categoria, poderes, principal_poder, fraquezas, nivel_de_forca FROM heroi"
+            vingadores = db.select(query)
+            for vingador in vingadores:
+                Vingador(*vingador)
+        except Exception as e:
+            print(f'Erro ao carregar heroi: {e}')
+        finally:
+            db.disconnect()
+        
+        

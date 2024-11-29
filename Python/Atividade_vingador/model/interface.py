@@ -5,6 +5,10 @@ from model.database import Database
 
 class Interface:
 
+    def __init__(self):
+        Vingador.carregar_herois()
+        self.menu_principal()
+
     def menu_principal(self):
         self.exibe_titulo_app()
         while True:
@@ -66,12 +70,10 @@ class Interface:
         nome_heroi = capwords(input("Nome do herói: "))
         nome_real = input("Identidade secreta: ")
         categoria = input("Categoria ('Humano', 'Meta-Humano', 'Android', 'Deidade', 'Alenigena'): ").capitalize()
-        poderes = input("Poderes (separados por vírgula): ").split(',') # armazena em uma lista
+        poderes = input("Poderes (separados por vírgula): ")#.split(',') # armazena em uma lista
         poder_principal = input("Poder Principal: ")
-        fraquezas = input("Fraquezas: (separadas por vírgula): ").split(',') # armazena em uma lista
+        fraquezas = input("Fraquezas: (separadas por vírgula): ")#.split(',') # armazena em uma lista
         nivel_forca = int(input("Nível de Força: "))
-
-        Vingador(nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca)
 
         # Salva o vingador no banco de dados
         try:
@@ -82,7 +84,10 @@ class Interface:
             
             values = (nome_heroi, nome_real, categoria, ', '.join(poderes), poder_principal, ', '.join(fraquezas), nivel_forca)
 
-            db.execute_query(query, values) # executa a query, substituindo os placeholders pelos valores
+            cursor = db.execute_query(query, values) # executa a query, substituindo os placeholders pelos valores
+
+            Vingador(cursor.lastrowid, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca)
+
         except Exception as e:
             print(f"Erro ao salvar vingador no banco de dados: {e}")
         finally:
@@ -99,7 +104,7 @@ class Interface:
         nome_heroi = capwords(input("Nome do herói: "))
         for vingador in Vingador.lista_vingadores:
             if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
-                print(vingador.convocar())
+                input(f'Insira o status de convocação de {nome_heroi}: ').capitalize()
                 self.aguardar_enter()
                 return
         print(f"Vingador(a) '{nome_heroi}' não encontrado.")

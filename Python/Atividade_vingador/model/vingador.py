@@ -5,7 +5,7 @@ class Vingador:
     CATEGORIAS_PERMITIDAS = ['Humano', 'Meta-humano', 'Android', 'Deidade', 'Alienígena']
     lista_vingadores = []
 
-    def __init__(self, id, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca, convocado=False, tornozeleira=False, chip_gps=False):
+    def __init__(self, id, nome_heroi, nome_real, categoria, poderes, poder_principal, fraquezas, nivel_forca, convocado, tornozeleira=False, chip_gps=False):
         self.id = id
         self.nome_heroi = nome_heroi
         self.nome_real = nome_real
@@ -49,6 +49,8 @@ class Vingador:
     def tornozeleira(self):
         if self.convocado == 'Comparecido':
             return 'Ativa' if self._tornozeleira else 'Inativo'
+        else:
+            return 'Requisitos insuficientes'
 
     @tornozeleira.setter
     def tornozeleira(self, valor):
@@ -59,7 +61,7 @@ class Vingador:
         if self.tornozeleira == 'Ativa':
             return 'Ativada' if self._chip_gps else 'Inativa'
         else:
-            return 'O chip não pode ser ativado'
+            return 'Requisitos insuficientes'
 
     @chip_gps.setter
     def chip_gps(self, valor):
@@ -82,7 +84,7 @@ class Vingador:
 
     @classmethod
     def listar_vingadores(cls):
-        print(f"{'Nome do Herói'.ljust(20)} |  {'Nome Real'.ljust(20)} |  {'Categoria'.ljust(15)} |  {'Convocado'.ljust(15)} |  {'Tornozeleira'.ljust(15)} |  {'Rastreado'.ljust(15)}")
+        print(f"{'Nome do Herói'.ljust(20)} |  {'Nome Real'.ljust(20)} |  {'Categoria'.ljust(15)} |  {'Convocado'.ljust(20)} |  {'Tornozeleira'.ljust(20)} |  {'Rastreado'.ljust(20)}")
         print('-' * 115)
         for vingador in cls.lista_vingadores:
             print(vingador)
@@ -103,12 +105,12 @@ class Vingador:
         return None
 
     def __str__(self):
-        return f'{self.nome_real.ljust(20)} |  {self.nome_heroi.ljust(20)} |  {self.categoria.ljust(15)} |  {self.convocado.ljust(15)} |  {self.tornozeleira.ljust(15)} |  {self.chip_gps.ljust(15)}'
+        return f'{self.nome_real.ljust(20)} |  {self.nome_heroi.ljust(20)} |  {self.categoria.ljust(15)} |  {self.convocado.ljust(20)} |  {self.tornozeleira.ljust(20)} |  {self.chip_gps.ljust(20)}'
 
     def aplicar_tornozeleira(self):
         if self._convocado:
             if self.nome_heroi == 'Thor':
-                return '"Eu sou Thor, Deus do Trovão, filho de Odin! Nenhuma corrente ou restrição pode me controlar. \nTentem colocar-me uma tornozeleira, e verão o que acontece quando um deus é desafiado..."'
+                return '"Eu sou Thor, Deus do Trovão, filho de Odin! Nenhuma corrente ou restrição pode me controlar. \nTentem colocar-me uma tornozeleira, e verão o que acontece quando um Deus é desafiado..."'
             elif self.nome_heroi == 'Hulk':
                 return '"Hulk esmaga! Hulk mais forte tornozeira!"'
             self.tornozeleira = True

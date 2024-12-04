@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `vingadores` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `vingadores`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vingadores
@@ -113,7 +115,7 @@ CREATE TABLE `heroi` (
   `fraquezas` varchar(45) DEFAULT NULL,
   `nivel_de_forca` int DEFAULT NULL,
   PRIMARY KEY (`heroi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +124,7 @@ CREATE TABLE `heroi` (
 
 LOCK TABLES `heroi` WRITE;
 /*!40000 ALTER TABLE `heroi` DISABLE KEYS */;
-INSERT INTO `heroi` VALUES (1,'Teste','Testinaldo da Silva','Android','Tes,  te','Tes','Te,  ste',10000),(2,'Teste2','Testados Anastacio','Deidade','Testo,  terona','terona','Efeitos colaterais',1000),(3,'1','Atestados','Humano','Trembolona,  Deca','Esteroides','Efeitos colaterais',10000),(4,'Teste4','Tes.Face n°4','Meta-humano','1','1','1,  2',3000),(5,'Teste|29.11|','a','Humano','sim, nao','sim','talvez,  será?',1);
+INSERT INTO `heroi` VALUES (1,'Teste','Testinaldo da Silva','Android','Tes,  te','Tes','Te,  ste',10000),(2,'Teste2','Testados Anastacio','Deidade','Testo,  terona','terona','Efeitos colaterais',1000),(3,'1','Atestados','Humano','Trembolona,  Deca','Esteroides','Efeitos colaterais',10000),(4,'Teste4','Tes.Face n°4','Meta-humano','1','1','1,  2',3000),(5,'Teste|29.11|','a','Humano','sim, nao','sim','talvez,  será?',1),(6,'A','a','Humano','a','a','b',100),(7,'B','b','Deidade','b, ,,  , b','b','a, ,,  , a',1),(8,'A','a','Humano','a, ,,  , a','a','a',10),(9,'A','a','Huamno','1, ,,  , 1','1','2,  , 2,  ',10),(10,'1','1','Huajk','1','1','1',1);
 /*!40000 ALTER TABLE `heroi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-29 15:53:27
+-- Dump completed on 2024-12-04 13:50:08

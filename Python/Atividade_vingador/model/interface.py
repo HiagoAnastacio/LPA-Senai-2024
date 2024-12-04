@@ -108,7 +108,7 @@ class Interface:
             
             nome_heroi = input("Digite o nome do herói que deseja convocar: ")
             query_heroi_id = "SELECT heroi_id FROM heroi WHERE nome_de_heroi = %s"
-            resultado_id = (query_heroi_id (nome_heroi))  # Passando os parâmetros para a consulta
+            resultado_id = db.select(query_heroi_id, (nome_heroi,))  # Passando os parâmetros para a consulta
 
             # Verifica se o herói foi encontrado
             if not resultado_id:
@@ -136,17 +136,18 @@ class Interface:
                 except ValueError:
                     print("Formato de data inválido. Tente novamente.")
             
-            status_convocado = input(f'Insira o status de convocação do Vingador {nome_heroi} ({", ".join(Vingador.STATUS_CONVOCACAO)}): ').capitalize()
+            status_convocacao = input(f'Insira o status de convocação do Vingador {nome_heroi} ({", ".join(Vingador.STATUS_CONVOCACAO)}): ').capitalize()
+            Vingador._convocado = status_convocacao
 
             # Validando o status de convocação
-            while status_convocado not in Vingador.STATUS_CONVOCACAO:
+            while status_convocacao not in Vingador.STATUS_CONVOCACAO:
                 print(f"Status '{status_convocado}' inválido.")
                 status_convocado = input(f'Insira o status de convocação do Vingador {nome_heroi} ({", ".join(Vingador.STATUS_CONVOCACAO)}): ').capitalize()
 
-            # Inserir no banco de dados
-            query = "INSERT INTO convocacao (heroi_id, data_convocacao, status_convocado, data_comparecimento, motivo) VALUES (%s, %s, %s, %s, %s)"
-            values = (heroi_id, data_convocacao, status_convocado, data_comparecimento, motivo)
+            query = "INSERT INTO convocacao (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo) VALUES (%s, %s, %s, %s, %s)"
+            values = (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo)
             db.execute_query(query, values)
+
 
             print(f"Vingador {nome_heroi} convocado com sucesso!")
             
@@ -156,13 +157,54 @@ class Interface:
             db.disconnect()
 
     def aplicar_tornozeleira(self):
-        nome_heroi = capwords(input("Nome do herói: "))
-        for vingador in Vingador.lista_vingadores:
-            if nome_heroi in vingador.nome_heroi or nome_heroi in vingador.nome_real:
-                print(vingador.aplicar_tornozeleira())
-                self.aguardar_enter()
+        try:
+            db = Database()
+            db.connect()
+            
+            nome_heroi = input("Digite o nome do herói aplicar a tornozeleira: ")
+            query_heroi_id = "SELECT heroi_id FROM heroi WHERE nome_de_heroi = %s"
+            resultado_id = db.select(query_heroi_id, (nome_heroi,))  # Passando os parâmetros para a consulta
+
+            # Verifica se o herói foi encontrado
+            
+            if not resultado_id:
+                print(f"Herói '{nome_heroi}' não encontrado no banco de dados.")
                 return
-        print(f"Vingador(a) '{nome_heroi}' não encontrado.")
+
+            heroi_id = resultado_id[0][0]
+
+            motivo = input("Motivo da convocação: ")
+
+            # Lê as datas de convocação e comparecimento, com validação de formato
+            while True:
+                try:
+                    data_convocacao_str = input(f"Insira a data da ativação da tornozeleira do Vingador {nome_heroi} (formato: DD/MM/AAAA): ")
+                    data_convocacao = datetime.strptime(data_convocacao_str, "%d/%m/%Y")
+                    break
+                except ValueError:
+                    print("Formato de data inválido. Tente novamente.")
+            
+            while True:
+                try:
+                    data_comparecimento_str = input(f"Insira a data de desativação da tornozeleira do Vingador {nome_heroi} (formato: DD/MM/AAAA): ")
+                    data_comparecimento = datetime.strptime(data_comparecimento_str, "%d/%m/%Y")
+                    break
+                except ValueError:
+                    print("Formato de data inválido. Tente novamente.")
+            
+            # query = "INSERT INTO convocacao (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo) VALUES (%s, %s, %s, %s, %s)"
+            # values = (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo)
+            
+            # db.execute_query(query, values)
+
+
+            print(f"Vingador {nome_heroi} convocado com sucesso!")
+            
+        except Exception as e:
+            print(f"Erro ao convocar o vingador: {e}")
+        finally:
+            db.disconnect()
+
 
     def aplicar_chip_gps(self):
         nome_heroi = capwords(input("Nome do herói: "))

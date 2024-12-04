@@ -1,4 +1,5 @@
 from model.interface import Interface
+from model.vingador import Vingador
 
 def main():
     

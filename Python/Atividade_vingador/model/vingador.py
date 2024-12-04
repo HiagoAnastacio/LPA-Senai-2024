@@ -24,9 +24,9 @@ class Vingador:
     def categoria(self):
         return self._categoria
     
-    @property
-    def convocado(self):
-        return self._convocado
+    # @property
+    # def convocado(self):
+    #     return self._convocado
 
     @categoria.setter
     def categoria(self, categoria):
@@ -37,14 +37,14 @@ class Vingador:
         else:
             self._categoria = categoria
 
-    @convocado.setter
-    def convocado(self, convocado):
-        convocado = convocado.capitalize()
-        if convocado not in self.STATUS_CONVOCACAO:
-            print(f"Status '{convocado}' inválido.")
-            self._convocado = self._solicitar_status_valido()
-        else:
-            self._convocado = convocado
+    # @convocado.setter
+    # def convocado(self, convocado):
+    #     convocado = convocado.capitalize()
+    #     if convocado not in self.STATUS_CONVOCACAO:
+    #         print(f"Status '{convocado}' inválido.")
+    #         self._convocado = self._solicitar_status_valido()
+    #     else:
+    #         self._convocado = convocado
 
     @property
     def tornozeleira(self):
@@ -75,16 +75,16 @@ class Vingador:
                 return convocado
             print(f"Status '{convocado}' inválido.")
 
-    def _solicitar_categoria_valida(self):
-        while True:
-            categoria = input(f"Digite uma categoria válida ({', '.join(self.CATEGORIAS_PERMITIDAS)}): ").capitalize()
-            if categoria in self.CATEGORIAS_PERMITIDAS:
-                return categoria
-            print(f"Categoria '{categoria}' inválida.")
+    # def _solicitar_categoria_valida(self):
+    #     while True:
+    #         categoria = input(f"Digite uma categoria válida ({', '.join(self.CATEGORIAS_PERMITIDAS)}): ").capitalize()
+    #         if categoria in self.CATEGORIAS_PERMITIDAS:
+    #             return categoria
+    #         print(f"Categoria '{categoria}' inválida.")
 
     @classmethod
     def listar_vingadores(cls):
-        print(f"{'Nome do Herói'.ljust(20)} |  {'Nome Real'.ljust(20)} |  {'Categoria'.ljust(15)} |  {'Convocado'.ljust(20)} |  {'Tornozeleira'.ljust(20)} |  {'Status GPS'.ljust(20)}")
+        print(f"{'Nome do Herói'.ljust(20)} |  {'Nome Real'.ljust(20)} |  {'Categoria'.ljust(15)} |  {'Convocado'.ljust(20)} |  {'Tornozeleira'.ljust(24)} |  {'Status GPS'.ljust(20)}")
         print('-' * 125)
         for vingador in cls.lista_vingadores:
             print(vingador)
@@ -106,11 +106,11 @@ class Vingador:
     def __str__(self):
         return f'{self.nome_real.ljust(20)} |  {self.nome_heroi.ljust(20)} |  {self.categoria.ljust(15)} |  {self.convocado.ljust(20)} |  {self.tornozeleira.ljust(20)} |  {self.chip_gps.ljust(20)}'
 
-    def aplicar_tornozeleira(self):
-        if self._convocado == 'Comparecido':
-            self.tornozeleira = True
-            return 'Tornozeleira aplicada com sucesso!'
-        return f'{self.nome_heroi} não foi convocado ainda.'
+    # def aplicar_tornozeleira(self):
+    #     if self._convocado == 'Comparecido':
+    #         self.tornozeleira = True
+    #         return 'Tornozeleira aplicada com sucesso!'
+    #     return f'{self.nome_heroi} não foi convocado ainda.'
 
     def aplicar_chip_gps(self):
         if not self._tornozeleira:

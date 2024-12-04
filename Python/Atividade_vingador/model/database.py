@@ -38,9 +38,12 @@ class Database:
             print(f'Erro: {e}')
             return None
 
-    def select(self,query):
+    def select(self, query, params=None):
         try:
-            self.cursor.execute(query)
+            if params:
+                self.cursor.execute(query, params)  # Usa parâmetros na consulta
+            else:
+                self.cursor.execute(query)  # Consulta sem parâmetros
             return self.cursor.fetchall()
         except Error as e:
             print(f'Erro: {e}')

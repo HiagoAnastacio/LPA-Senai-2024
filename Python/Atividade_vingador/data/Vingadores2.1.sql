@@ -52,13 +52,13 @@ CREATE TABLE `convocacao` (
   `idconvocacao` int NOT NULL AUTO_INCREMENT,
   `heroi_id` int NOT NULL,
   `data_convocacao` date DEFAULT NULL,
-  `status_convocacao` char(20) DEFAULT NULL,
+  `status_convocacao` char(100) DEFAULT NULL,
   `data_comparecimento` date DEFAULT NULL,
   `motivo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idconvocacao`),
   KEY `heroi_id_idx` (`heroi_id`),
   CONSTRAINT `heroi_id` FOREIGN KEY (`heroi_id`) REFERENCES `heroi` (`heroi_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `convocacao` (
 
 LOCK TABLES `convocacao` WRITE;
 /*!40000 ALTER TABLE `convocacao` DISABLE KEYS */;
+INSERT INTO `convocacao` VALUES (1,7,'2011-11-11','Comparecido','2012-12-12','Teste do sistema de convocação.'),(2,3,'2011-11-12','Comparecido','2011-12-02','Segundo teste do sistema de convocação.'),(3,3,'2011-11-11','Comparecido','2012-12-12','Terceiro teste do sistema de convocação.');
 /*!40000 ALTER TABLE `convocacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +166,10 @@ CREATE TABLE `tornozeleira` (
   `status` tinyint DEFAULT NULL,
   `data_ativacao` datetime DEFAULT NULL,
   `data_desativacao` datetime DEFAULT NULL,
-  PRIMARY KEY (`idtornozeleira`)
+  `heroi_id` int NOT NULL,
+  PRIMARY KEY (`idtornozeleira`),
+  KEY `heroi_id_idx` (`heroi_id`),
+  CONSTRAINT `heroi_id_heroi` FOREIGN KEY (`heroi_id`) REFERENCES `heroi` (`heroi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -195,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-04 13:50:08
+-- Dump completed on 2024-12-04 16:10:39

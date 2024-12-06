@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+</head>
+<body>
+    <input type="text" id="tarefa"></input>
+    <button onclick="adicionar_tarefa()">Adicionar tarefa</button>
+    <!-- <p id="exibir"></p> -->
+    <div id="lista_tarefas"></div>
+    <script>
+
+        // Seção de Modelagem (de dados)
+        let afazeres = [
+            // {
+            //     nome: "",
+            //     id: ""
+            // }
+        ]
+
+        // Seção de Visualização
+        function renderizar(){
+
+            document.getElementById("lista_tarefas").innerHTML = "";
+            
+            afazeres.forEach(function(tarefa){
+                const botao = document.createElement("button")
+                botao.innerText = "Remover";
+                botao.style = "margin-left: 12px;";
+                botao.id = tarefa.id;
+                botao.onclick = remover_tarefa;
+
+                const elemento = document.createElement("div");
+                elemento.innerHTML = "TAREFA:  " + tarefa.nome + " | ID: " + tarefa.id;
+                elemento.appendChild(botao);
+
+                const lista_tarefas = document.getElementById("lista_tarefas");
+                lista_tarefas.appendChild(elemento);
+
+            });
+        }
+        
+        // Seção de Controle
+        function adicionar_tarefa() {
+            const box_txt = document.getElementById("tarefa");
+            const tarefa = box_txt.value;
+
+            afazeres.push(
+               {
+                   nome: tarefa,
+                   id: Date.now()
+               }
+            );
+
+           renderizar();
+        }
+
+        function remover_tarefa(evento){
+            const botao = evento.target;
+            const id = botao.id;
+            afazeres = afazeres.filter(function(tarefa){
+                    if (tarefa.id == id){
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
+                }
+            );
+            renderizar();
+        }
+    </script>
+</body>
+</html>

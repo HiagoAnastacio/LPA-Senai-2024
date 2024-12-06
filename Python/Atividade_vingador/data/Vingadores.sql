@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `vingadores` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `vingadores`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vingadores
@@ -58,7 +56,7 @@ CREATE TABLE `convocacao` (
   PRIMARY KEY (`idconvocacao`),
   KEY `heroi_id_idx` (`heroi_id`),
   CONSTRAINT `heroi_id` FOREIGN KEY (`heroi_id`) REFERENCES `heroi` (`heroi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +65,7 @@ CREATE TABLE `convocacao` (
 
 LOCK TABLES `convocacao` WRITE;
 /*!40000 ALTER TABLE `convocacao` DISABLE KEYS */;
-INSERT INTO `convocacao` VALUES (1,7,'2011-11-11','Comparecido','2012-12-12','Teste do sistema de convocação.'),(2,3,'2011-11-12','Comparecido','2011-12-02','Segundo teste do sistema de convocação.'),(3,3,'2011-11-11','Comparecido','2012-12-12','Terceiro teste do sistema de convocação.');
+INSERT INTO `convocacao` VALUES (1,7,'2011-11-11','Comparecido','2012-12-12','Teste do sistema de convocação.'),(2,3,'2011-11-12','Comparecido','2011-12-02','Segundo teste do sistema de convocação.'),(3,3,'2011-11-11','Comparecido','2012-12-12','Terceiro teste do sistema de convocação.'),(4,2,'2024-01-01','Comparecido','2025-01-01','Buscar entender as falhas do retorno do banco de dados em relação ao status da tornozeleira.');
 /*!40000 ALTER TABLE `convocacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +168,7 @@ CREATE TABLE `tornozeleira` (
   PRIMARY KEY (`idtornozeleira`),
   KEY `heroi_id_idx` (`heroi_id`),
   CONSTRAINT `heroi_id_heroi` FOREIGN KEY (`heroi_id`) REFERENCES `heroi` (`heroi_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +177,7 @@ CREATE TABLE `tornozeleira` (
 
 LOCK TABLES `tornozeleira` WRITE;
 /*!40000 ALTER TABLE `tornozeleira` DISABLE KEYS */;
+INSERT INTO `tornozeleira` VALUES (1,1,'2024-12-06 00:00:00','2024-12-10 00:00:00',7),(2,1,'2024-02-02 00:00:00','2025-02-02 00:00:00',2);
 /*!40000 ALTER TABLE `tornozeleira` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-04 16:10:39
+-- Dump completed on 2024-12-06 13:48:01

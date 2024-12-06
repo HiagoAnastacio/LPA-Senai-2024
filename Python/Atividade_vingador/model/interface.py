@@ -8,6 +8,8 @@ class Interface:
 
     def __init__(self):
         Vingador.carregar_herois()
+        Vingador.carregar_convocacao()
+        Vingador.carregar_tornozeleiras()
         self.menu_principal()
 
     def menu_principal(self):
@@ -160,50 +162,62 @@ class Interface:
         try:
             db = Database()
             db.connect()
-            
-            nome_heroi = input("Digite o nome do herói aplicar a tornozeleira: ")
-            query_heroi_id = "SELECT heroi_id FROM heroi WHERE nome_de_heroi = %s"
-            resultado_id = db.select(query_heroi_id, (nome_heroi,))  # Passando os parâmetros para a consulta
 
-            # Verifica se o herói foi encontrado
-            
-            if not resultado_id:
-                print(f"Herói '{nome_heroi}' não encontrado no banco de dados.")
+            # Solicitar o nome do herói
+            nome_heroi = input("Digite o nome do herói para aplicar a tornozeleira: ")
+
+            # Consultar o ID do herói e o status de convocação
+            query = """
+                SELECT h.heroi_id, c.status_convocacao 
+                FROM heroi h 
+                JOIN convocacao c ON h.heroi_id = c.heroi_id 
+                WHERE h.nome_de_heroi = %s
+            """
+            resultado = db.select(query, (nome_heroi,))
+
+            # Validar se o herói foi encontrado e se há convocação associada
+            if not resultado:
+                print(f"Herói '{nome_heroi}' não encontrado ou não possui convocação registrada.")
                 return
 
-            heroi_id = resultado_id[0][0]
+            heroi_id, status_convocacao = resultado[0]
 
-            motivo = input("Motivo da convocação: ")
+            # Validar o status de convocação
+            if status_convocacao.lower() != 'comparecido':
+                print(f"O Vingador '{nome_heroi}' ainda não foi convocado ou não compareceu.")
+                return
 
-            # Lê as datas de convocação e comparecimento, com validação de formato
+            # Solicitar as datas de ativação e desativação da tornozeleira
             while True:
                 try:
-                    data_convocacao_str = input(f"Insira a data da ativação da tornozeleira do Vingador {nome_heroi} (formato: DD/MM/AAAA): ")
-                    data_convocacao = datetime.strptime(data_convocacao_str, "%d/%m/%Y")
+                    data_ativacao_str = input(f"Insira a data de ativação da tornozeleira (DD/MM/AAAA): ")
+                    data_ativacao = datetime.strptime(data_ativacao_str, "%d/%m/%Y")
                     break
                 except ValueError:
                     print("Formato de data inválido. Tente novamente.")
-            
+
             while True:
                 try:
-                    data_comparecimento_str = input(f"Insira a data de desativação da tornozeleira do Vingador {nome_heroi} (formato: DD/MM/AAAA): ")
-                    data_comparecimento = datetime.strptime(data_comparecimento_str, "%d/%m/%Y")
+                    data_desativacao_str = input(f"Insira a data de desativação da tornozeleira (DD/MM/AAAA): ")
+                    data_desativacao = datetime.strptime(data_desativacao_str, "%d/%m/%Y")
                     break
                 except ValueError:
                     print("Formato de data inválido. Tente novamente.")
-            
-            # query = "INSERT INTO convocacao (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo) VALUES (%s, %s, %s, %s, %s)"
-            # values = (heroi_id, data_convocacao, status_convocacao, data_comparecimento, motivo)
-            
-            # db.execute_query(query, values)
 
+            # Inserir o registro da tornozeleira no banco
+            query_insert = """
+                INSERT INTO tornozeleira (status, data_ativacao, data_desativacao, heroi_id) 
+                VALUES (%s, %s, %s, %s)
+            """
+            db.execute_query(query_insert, (True, data_ativacao, data_desativacao, heroi_id))
 
-            print(f"Vingador {nome_heroi} convocado com sucesso!")
-            
+            print(f"Tornozeleira aplicada com sucesso no Vingador '{nome_heroi}'.")
+
         except Exception as e:
-            print(f"Erro ao convocar o vingador: {e}")
+            print(f"Erro ao aplicar tornozeleira: {e}")
         finally:
             db.disconnect()
+
 
 
     def aplicar_chip_gps(self):

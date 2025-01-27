@@ -1,10 +1,8 @@
   <h1 align="center">
-  Lógica de Programação e Algoritmos - 1º Semestre de 2024
+  Portifólio contendo os projetos e ecercícios do curso de Análise e Desenvolvimento de Sistemas
 </h1>
 
 ## Curso
 - Curso técnico em Análise e Desenvolvimento de Sistemas
 
-## Cronograma
-- [x] Aula 04 - Introdução ao Github (07/02/24)
-   - Criação do perfil no Github
+

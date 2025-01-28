@@ -1,0 +1,28 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agenda</title>
+        <script defer src="agenda2.0.js"></script>
+        <link rel="stylesheet" href="agenda2.0.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <script defer src="agenda2.0.js"></script>
+    </head>
+    <body>
+        <div class="agenda">
+            <h1>Agenda</h1>
+            <form class="agenda-form" id="agenda-form">
+                <input type="text" id="task-input" placeholder="Adicionar tarefa">
+                <div class="date-inputs">
+                    <input type="number" id="task-day" placeholder="Dia" min="1" max="31">
+                    <input type="number" id="task-month" placeholder="Mês" min="1" max="12">
+                    <input type="number" id="task-year" placeholder="Ano" min="1900" max="2100">
+                </div>
+                <button type="submit">Adicionar</button>
+            </form>
+            <ul class="agenda-list" id="agenda-list"></ul>
+        </div>
+    </body>
+    </html>
+     

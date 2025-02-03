@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Funções de retorno (callback)</h1>
+    <p id="demo"></p>
+    <script>
+        function visor (algo){
+            document.querySelector("#demo").innerHTML = algo
+        }
+        function console0(algo){
+            console.log(algo);
+        }
+        function calculadora (num1, num2, res){
+            let soma = num1 + num2;
+            res (soma)
+        }
+        calculadora(5, 5 , visor);
+        calculadora(5 ,5 , console0);
+    </script>
+</body>
+</html>

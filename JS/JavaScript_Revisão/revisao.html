@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Funções em JavaSricpt</h1> -->
+    <!-- <h1>Escopo de Variável</h1> -->
+     <h1>Corpo de uma função como valor</h1>
+
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+
+    <script>
+        const funcao = a => a * a // Função anônima
+        // Arrow function, função flecha/seta.
+        document.querySelector("#demo1").innerHTML = funcao(5)
+
+
+
+            // const funcao = function(a,b){ // Quando uma função não te nome indicado, ela é uma função anônima.
+            // // function funcao(a,b){
+            //     // return a * b;
+            //     return arguments.length;
+            // }
+            // let x = funcao;
+            // document.querySelector("#demo1").innerHTML =  funcao//x.toString();
+
+
+
+            // if (true){
+            //     let variavel = 2; // Usar "var" ao invés de "let" possibilita que a variável seja usada fora do escopo. 
+            // }else{
+            //     let variavel2 = 3;
+            // }
+            // document.querySelector("#demo1").innerHTML = typeof variavel;
+            // document.querySelector("#demo2").innerHTML = typeof variavel2;
+
+            
+
+            // let txt = "Fora: " + typeof variavelCar;
+            // document.querySelector("#demo1").innerHTML = txt;
+
+            // let marcaCar;
+
+            // function funcao(mC){
+
+            //     let variavelCar = "Ford"; // Só vale alguma coisa dentro da Função.
+            //     let txt = "Dentro: " + typeof variavelCar + " " + variavelCar;
+            //     // document.querySelector("#demo2").innerHTML = txt;
+            //     // return param1 * param2;
+            //     return mC;
+            // }
+            // txt = funcao("Volkswagen");
+            // document.querySelector("#demo2").innerHTML = txt;
+
+            // //let resultado = funcao (5, 4);
+            // //document.querySelector("#demo1").innerHTML =  "4 multiplicado por 5 da " + funcao (5, 4); // resultado;
+
+
+
+            // // let variavel = "Sei, lá. Não";
+            // // variavel = "Sei lá, 2. A missão."
+            // // let variavel2 = variavel;
+            // // variavel2 = 2;
+            // // console.log(variavel2);
+            
+    </script>
+</body>
+</html>

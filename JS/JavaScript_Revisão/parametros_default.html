@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Definindo um valor dafault para um parãmetro de função.</p>
+    <p id="demo1"></p>
+
+    <script>
+        function funcao(x,y = 2){
+            // if(y === undefined){
+            //     y = 2;            
+            // }
+            return x * y;
+        }
+        let x;
+        document.querySelector("#demo1").innerHTML = funcao(5, x);
+    </script>
+    
+</body>
+</html>

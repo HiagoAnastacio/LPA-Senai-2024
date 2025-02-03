@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Laço For In</h1>
+    <p>A instrução "for in" percorre as propriedades de um objeto.</p>
+    <p id="demo1"></p>
+
+    <script>
+        const pessoa = "GGWP"//{nome:"Samuel", sobrenome:"Coutinho", Idade: 16};
+
+        let txt = "";
+        for (let x in pessoa){
+            txt += pessoa [x] + "_";
+        }
+
+        document.querySelector("#demo1").innerHTML = txt;
+    </script>   
+</body>
+</html>
